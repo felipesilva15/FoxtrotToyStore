@@ -10,23 +10,49 @@
 }
 
 header{
-    background-color: #1B0C22;
-    height: 220px;
+    background-color: #212121;
+}
+
+body{
+    min-height: 100vh;
 }
 
 .material-icons, .material-icons-outlined{
     cursor: default;
 }
 
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
-.material-icons.md-48 { font-size: 64px; }
+.material-icons.md-18 {
+    font-size: 18px;
+}
 
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-24 {
+    font-size: 24px;
+}
 
-.cart-icon{
-    color: #FFF;
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.material-icons.md-48 {
+    font-size: 64px;
+}
+
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.hand-cursor{
+    cursor: pointer;
+}
+
+#search-bar{
+    width: 40%;
 }
