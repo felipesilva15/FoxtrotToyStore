@@ -13,13 +13,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+    <!-- CSS views -->
+    @stack('styles')
 </head>
 <body>
     <header class="d-flex justify-content-between align-items-center px-3 py-4">
-        <div class="logo p-1">
-            <img src="images/Logo.png" class="default-size" alt="Logo">
-        </div>
+        <a href="{{ url('/') }}">
+            <div class="logo p-1">
+                <img src="images/Logo.png" class="default-size" alt="Logo">
+            </div>
+        </a>
         <div id="search-bar">
             @include('layouts.inc.productSearch')
         </div>
@@ -35,7 +40,7 @@
                 <div class="dropdown-toggle d-inline" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="15,15">
                     <span class="material-icons md-36 md-light ms-3 hand-cursor">account_circle</span>
                 </div>
-                <form action="/login" method="post" class="dropdown-menu p-4" style="width: 300px">
+                <form action="/login" method="post" class="dropdown-menu p-4" style="width: 320px">
                     @csrf
                     <h3 class="text-center mb-3">Login</h3>
                     <div class="mb-2">
@@ -67,5 +72,8 @@
 
     <!-- Boostrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <!-- JS views -->
+    @stack('scripts')
 </body>
 </html>
