@@ -66,8 +66,42 @@
     <main>
         @yield('content')
     </main>
-    <footer>
-
+    <footer class="pt-4">
+        <div class="d-flex flex-column pt-5 text-light">
+            <div class="d-flex justify-content-between mb-4 mx-5">
+                <div class="mx-1">
+                    <a href="{{ url('/') }}">
+                        <div class="logo p-1">
+                            <img src="images/Logo.png" class="default-size" alt="Logo">
+                        </div>
+                    </a>
+                </div>
+                <div class="d-flex flex-column mx-1">
+                    <span class="fs-5 fw-bold mb-3">Atendimento ao cliente</span>
+                    <a class="text-reset" href="mailto:sac@foxtrot.com">sac@foxtrot.com</a>
+                    <a>(11) 5555-3838</a>
+                    <a class="text-reset" href="https://api.whatsapp.com/send?phone=5511954452800">(11) 95445-2800</a>
+                </div>
+                <div class="d-flex flex-column mx-1">
+                    <span class="fs-5 fw-bold mb-3">Redes sociais</span>
+                    <a class="text-reset" href="https://www.facebook.com/">Facebook</a>
+                    <a class="text-reset" href="https://www.instagram.com/">Instagram</a>
+                    <a class="text-reset" href="https://www.linkedin.com/">LinkedIn</a>
+                </div>
+                <div class="d-flex flex-column mx-1">
+                    <span class="fs-5 fw-bold mb-3">Métodos de pagamento</span>
+                </div>
+            </div>
+            <div class="mx-5">
+                <div class="mx-5">
+                    <hr class="default-width opacity-50">
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center default-width">
+                <p class="m-0 fs-5">© Copyright 2023 - Foxtrot Toy Store</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </div>
     </footer>
 
     <!-- Boostrap JS -->

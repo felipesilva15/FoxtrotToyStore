@@ -9,13 +9,19 @@
     height: 100%;
 }
 
-header{
+.default-width{
+    width: 100%;
+}
+
+header, footer{
     background-color: #212121;
 }
 
 body{
     min-height: 100vh;
 }
+
+
 
 .material-icons, .material-icons-outlined{
     cursor: default;
