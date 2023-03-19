@@ -62,3 +62,7 @@ body{
 #search-bar{
     width: 40%;
 }
+
+.ui-menu{
+    z-index: 999 !important;
+}

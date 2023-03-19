@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
 
-    <!-- Boostrap CSS -->
+    {{-- Boostrap CSS --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-    <!-- Google Fonts -->
+    {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- CSS principal -->
+    {{-- JQuery CSS --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    {{-- CSS principal --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-    <!-- CSS views -->
+    {{-- CSS views --}}
     @stack('styles')
 </head>
 <body>
@@ -68,7 +71,7 @@
     </main>
     <footer class="pt-4">
         <div class="d-flex flex-column pt-5 text-light">
-            <div class="d-flex justify-content-between mb-4 mx-5">
+            <div class="d-flex justify-content-between flex-column flex-md-row mb-4 mx-5">
                 <div class="mx-1">
                     <a href="{{ url('/') }}">
                         <div class="logo p-1">
@@ -76,7 +79,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="d-flex flex-column mx-1">
+                <div class="d-flex flex-column  mx-1">
                     <span class="fs-5 fw-bold mb-3">Atendimento ao cliente</span>
                     <a class="text-reset" href="mailto:sac@foxtrot.com">sac@foxtrot.com</a>
                     <a>(11) 5555-3838</a>
@@ -104,10 +107,18 @@
         </div>
     </footer>
 
-    <!-- Boostrap JS -->
+    {{-- Boostrap JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-    <!-- JS views -->
+    {{-- JQuery JS --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    {{-- Custom JS --}}
+    <script src="{{ asset('js/api.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    {{-- JS views --}}
     @stack('scripts')
 </body>
 </html>
