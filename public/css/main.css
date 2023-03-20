@@ -1,5 +1,5 @@
 .logo{
-    max-width: 200px;
+    max-width: 160px;
     border-radius: 8px;
     background-color: #FFF;
 }
@@ -20,8 +20,6 @@ header, footer{
 body{
     min-height: 100vh;
 }
-
-
 
 .material-icons, .material-icons-outlined{
     cursor: default;

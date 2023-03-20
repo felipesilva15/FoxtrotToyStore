@@ -22,10 +22,10 @@
     @stack('styles')
 </head>
 <body>
-    <header class="d-flex justify-content-between align-items-center px-3 py-4">
+    <header class="d-flex justify-content-between align-items-center px-3 py-3">
         <a href="{{ url('/') }}">
             <div class="logo p-1">
-                <img src="images/Logo.png" class="default-size" alt="Logo">
+                <img src="{{ asset('images/Logo.png') }}" class="default-size" alt="Logo">
             </div>
         </a>
         <div id="search-bar">
@@ -75,7 +75,7 @@
                 <div class="mx-1">
                     <a href="{{ url('/') }}">
                         <div class="logo p-1">
-                            <img src="images/Logo.png" class="default-size" alt="Logo">
+                            <img src="{{ asset('images/Logo.png') }}" class="default-size" alt="Logo">
                         </div>
                     </a>
                 </div>
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="d-flex flex-column justify-content-center align-items-center default-width">
-                <p class="m-0 fs-5">© Copyright 2023 - Foxtrot Toy Store</p>
+                <p class="m-0 fs-5">© 2023 Foxtrot Toy Store</p>
                 <p>Todos os direitos reservados</p>
             </div>
         </div>
