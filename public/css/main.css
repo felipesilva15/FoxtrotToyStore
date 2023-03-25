@@ -1,5 +1,5 @@
 .logo{
-    max-width: 160px;
+    max-width: 120px;
     border-radius: 8px;
     background-color: #FFF;
 }
@@ -13,9 +13,25 @@
     width: 100%;
 }
 
-header, footer{
+footer{
     background-color: #212121;
 }
+
+main{
+    margin-top: 100px;
+}
+
+header{
+    position: fixed;
+    top: 8px;
+    width: 100%;
+}
+
+header>div{
+    border-radius: 80px;
+    margin: 0 5em;
+}
+
 
 body{
     min-height: 100vh;
@@ -46,7 +62,7 @@ body{
 }
 
 .material-icons.md-dark {
-    color: rgba(0, 0, 0, 0.54);
+    color: #212121;
 }
 
 .material-icons.md-light {
@@ -58,7 +74,7 @@ body{
 }
 
 #search-bar{
-    width: 40%;
+    width: 70%;
 }
 
 .ui-menu{
