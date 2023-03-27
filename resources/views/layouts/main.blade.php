@@ -21,6 +21,9 @@
     {{-- CSS principal --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
+    {{-- CSS Home --}}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
     {{-- CSS views --}}
     @stack('styles')
 </head>
