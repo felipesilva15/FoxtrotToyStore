@@ -3,84 +3,55 @@
 @section('title', 'Home')
 
 @section('content')
-    <section id="primeira-secao">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item1 active">
-                <img src="images/imgprincipal.jpg" class="d-block w-100" alt="...">
-              </div>
-            </div>
+    <section id="primeira-secao" class="p-0">
+      <div id="carouselExampleAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{ asset('images/logo.png') }}" class="d-block w-100 m-0" alt="...">
           </div>
+          <div class="carousel-item">
+            <img src="{{ asset('images/logo.png') }}" class="d-block w-100 m-0" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ asset('images/logo.png') }}" class="d-block w-100 m-0" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </section>
-    <section id="segunda-secao">
+    <section id="segunda-secao" class="d-flex flex-column align-items-center py-5">
         <div>
-            <h2>Brinquedos mais Vendidos</h2>
+            <h2 class="pb-5 m-0 fw-bold text-center">Brinquedos mais vendidos</h2>
         </div>
-        <div class="break"></div> <!-- break -->
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="images/logo.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/logo.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/logo.png" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+        <div class="container">
+          <div class="row">
+            @foreach ($productsBestSellings as $product)
+              <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
+                @include('components.product-card', $product)
+              </div>
+            @endforeach
+          </div>
         </div>
     </section>
-    <section id="terceira-secao">
-        <h2>Escolha sua Diversão</h2>
-        <div class="cardscategorias">
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-body" onclick="acessarProdutoCategoria()">
-                  <h5 class="text-justify">Eletrônicos</h5>
-                </div>
-            </div>
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-body" onclick="acessarProdutoCategoria()">
-                  <h5 class="text-justify">Tabuleiros</h5>
-                </div>
-            </div>
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-body" onclick="acessarProdutoCategoria()">
-                  <h5 class="text-justify">Educativos</h5>
-                </div>
-            </div>
-            <div class="break"></div> <!-- break -->
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-body" onclick="acessarProdutoCategoria()">
-                  <h5 class="text-justify">Interativos</h5>
-                </div>
-            </div>
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-body" onclick="acessarProdutoCategoria()">
-                  <h5 class="text-justify">Pintura</h5>
-                </div>
-            </div>
+    <section id="terceira-secao"  class="d-flex flex-column align-items-center py-5">
+        <div>
+          <h2 class="pb-5 m-0 fw-bold text-center">Brinquedos com melhores descontos</h2>
+        </div>
+        <div class="container">
+          <div class="row">
+            @foreach ($productsBestDiscounts as $product)
+              <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
+                @include('components.product-card', $product)
+              </div>
+            @endforeach
+          </div>
         </div>
     </section>
-    <!-- QUERO CRIAR UMA FUNÇÃO PARA O "ONCLICK" DAS DIVS DE CATEGORIA DA PAGINA HOME
-         A IDEIA É QUE QUANDO O USUARIO CLICAR, LEVE ELE PARA PAGINA DE PRODUTO, COM A CATEGORIA FILTRADA.
-        <script>
-        function acessarProdutoCategoria(){
-            let texto = document.getElementById().textContent;
-            window.location.href = 'http://127.0.0.1:8000/?texto=' + encodeURIComponent(texto);
-        }
-    </script> -->
 @endsection

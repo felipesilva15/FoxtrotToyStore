@@ -17,21 +17,9 @@ footer{
     background-color: #212121;
 }
 
-main{
-    margin-top: 100px;
-}
-
 header{
-    position: fixed;
-    top: 8px;
     width: 100%;
 }
-
-header>div{
-    border-radius: 80px;
-    margin: 0 5em;
-}
-
 
 body{
     min-height: 100vh;
@@ -79,4 +67,13 @@ body{
 
 .ui-menu{
     z-index: 999 !important;
+}
+
+.product-card-container{
+    max-width: 1264px;
+}
+
+.image-fit{
+    aspect-ratio: 9/9;
+    object-fit: contain;
 }

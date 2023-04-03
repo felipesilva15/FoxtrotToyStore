@@ -9,75 +9,16 @@
     align-items: center;
 }
 
+section h2{
+    font-family: 'Comic Neue', cursive;
+}
+
 /* 2ª SESSÃO DA HOME */
 #segunda-secao{
-    display: flex;
-    flex-direction: column;
-    padding: 0px 10px;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    align-items: center;
-    background-color: rgb(255, 214, 161);
-}
-
-/* #segunda-secao > img {
-    background-size: cover;
-} */
-
-#segunda-secao h2{
-    font-family: 'Comic Neue', cursive;
-    padding: 80px;
-}
-
-.carousel-item > img{
-    max-width: 800px;
-    max-height: 1000px;
+    background-color: #FFD6A1;
 }
 
 /* 3ª SESSÃO DA HOME */
 #terceira-secao{
-    padding: 0px 10px;
-    margin: 0 auto;
-    height: 600px;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-    background-color: lightgray;
-}
-#terceira-secao > div{
-    flex: 1 1 200px;
-}
-#terceira-secao h2{
-    font-family: 'Comic Neue', cursive;
-    padding: 80px;
-}
-.cardscategorias{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px;
-}
-.card{
-    width: 100%;
-    padding: 10px 40px;
-    margin-left: 20px;
-    margin-top: 20px;
-}
-.break {
-    flex-basis: 100%;
-    height: 0;
-}
-
-/* ESTILO PARA EFEITO DE BOTÃO */
-.card-body{
-    cursor: pointer;
-}
-.card-body:hover{
-    color: darkgray;
-    letter-spacing: 1px;
-}
-.card-body:active{
-    color: darkblue;
+    background-color: #ECECEC;
 }
