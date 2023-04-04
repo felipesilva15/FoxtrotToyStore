@@ -7,11 +7,17 @@
             <li><a class="dropdown-item" href="#">Perfil</a></li>
             <li><a class="dropdown-item" href="#">Meus pedidos</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    @method('post')
+                    <input class="dropdown-item" type="submit" value="Logout">
+                </form>
+            </li>
         </ul>
     @endauth
     @guest
-        <form action="/login" method="post" class="dropdown-menu p-4" style="width: 320px">
+        <form method="POST" action="{{ route('login') }}" class="dropdown-menu p-4" style="width: 320px">
             @csrf
             <h3 class="text-center mb-3">Login</h3>
             <div class="mb-2">
@@ -24,7 +30,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <div>
-                    <a href="{{ url('/register') }}">Cadastre-se</a>
+                    <a href="{{ route('register') }}">Cadastre-se</a>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary">Login</button>
