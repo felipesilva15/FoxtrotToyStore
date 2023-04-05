@@ -24,6 +24,8 @@
     {{-- CSS Home --}}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     {{-- CSS views --}}
     @stack('styles')
 </head>
@@ -115,9 +117,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     {{-- Custom JS --}}
     <script src="{{ asset('js/api.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    {{-- Toast Messages --}}
+    @include('layouts.inc.toastMessages')
 
     {{-- JS views --}}
     @stack('scripts')
