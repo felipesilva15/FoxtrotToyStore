@@ -22,15 +22,15 @@
             <h3 class="text-center mb-3">Login</h3>
             <div class="mb-2">
                 <label for="login-email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" placeholder="email@example.com" id="login-email" name="email" required>
+                <input type="email" class="form-control" id="login-email" name="email" required>
             </div>
             <div class="mb-2">
                 <label for="login-password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="login-password" placeholder="Senha" name="password" required minlength="3">
+                <input type="password" class="form-control" id="login-password" name="password" required minlength="3">
             </div>
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <div>
-                    <a href="{{ route('register') }}">Cadastre-se</a>
+                    <a href="{{ route('register') }}">Não possui cadastro?</a>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary">Login</button>

@@ -1,52 +1,46 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.auth')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+@section('title', 'Cadastre-se')
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+@section('content')
+    <div class="d-flex flex-column justify-content-center align-items-center full-vh">
+        <div class="mb-3">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('images/logo.png') }}" width="160px" alt="">
             </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
         </div>
-    </form>
-</x-guest-layout>
+        <div class="w-100 shadow rounded p-4" style="max-width: 450px">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="col-12 mb-2">
+                    <label class="form-label" for="name">Nome <span class="fw-bold text-danger">*</span></label>
+                    <input class="form-control" type="text" name="name" required>
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="form-label" for="cpf">CPF <span class="fw-bold text-danger">*</span></label>
+                    <input class="form-control" type="text" name="cpf" required>
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="form-label" for="email">E-mail <span class="fw-bold text-danger">*</span></label>
+                    <input class="form-control" type="email" name="email" required>
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="form-label" for="password">Senha <span class="fw-bold text-danger">*</span></label>
+                    <input class="form-control" type="password" name="password" required>
+                </div>
+                <div class="col-12 mb-2">
+                    <label class="form-label" for="password_confirmation">Confirme sua senha <span class="fw-bold text-danger">*</span></label>
+                    <input class="form-control" type="password" name="password_confirmation" required>
+                </div>
+                <div class="col-12 d-flex justify-content-between align-items-center mt-4">
+                    <div>
+                        <a href="{{ route('login') }}">Já possui cadastro?</a>
+                    </div>
+                    <div>
+                        <input class="btn btn-primary" type="submit" value="Cadastrar-se">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
