@@ -26,6 +26,9 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+    {{-- Toastify JS --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     {{-- CSS views --}}
     @stack('styles')
 </head>
@@ -123,7 +126,11 @@
     <script src="{{ asset('js/api.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
-    {{-- Toast Messages --}}
+    {{-- Toastify JS --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    {{-- Configuration toast Messages --}}
+    <script src="{{ asset('js/configToastfy.js') }}"></script>
     @include('layouts.inc.toastMessages')
 
     {{-- JS views --}}

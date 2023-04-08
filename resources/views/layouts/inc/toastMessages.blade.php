@@ -1,54 +1,33 @@
+{{-- Default toast messages --}}
 @if(Session::has('message'))
     <script>
-        toastr.options = {
-            "closeButton" : true,
-            "progressBar" : true
-        };
-        
-        toastr.success("{{ session('message') }}");
+        toast.success("{{ session('message') }}");
     </script>
 @endif
 
 @if(Session::has('error'))
     <script>
-        toastr.options = {
-            "closeButton" : true,
-            "progressBar" : true
-        };
-
-        toastr.error("{{ session('error') }}");
+        toast.error("{{ session('error') }}");
     </script>
 @endif
 
-{{-- @if($errors->get('email'))
-    <script>
-        toastr.options = {
-            "closeButton" : true,
-            "progressBar" : true
-        };
-
-        toastr.error("{{ $errors->get('email')[0] }}");
-    </script>
-@endif --}}
-
 @if(Session::has('info'))
     <script>
-        toastr.options = {
-            "closeButton" : true,
-            "progressBar" : true
-        };
-        
-        toastr.info("{{ session('info') }}");
+        toast.info("{{ session('info') }}");
     </script>
 @endif
 
 @if(Session::has('warning'))
     <script>
-        toastr.options = {
-            "closeButton" : true,
-            "progressBar" : true
-        };
+        toast.warning("{{ session('warning') }}");
+    </script>
+@endif
 
-        toastr.warning("{{ session('warning') }}");
+{{-- Custom toast validation errors --}}
+@if(count($errors->all()))
+    <script>
+        @foreach ($errors->all() as $error)
+            toast.error("{{ $error }}");
+        @endforeach
     </script>
 @endif
