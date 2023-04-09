@@ -30,17 +30,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if(isset($request->cpf)){
+            $request->cpf = preg_replace('/\D/', '', $request->cpf);
+        }
+
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:USUARIO,USUARIO_EMAIL|email',
-            'password' => 'required|string|confirmed|min:3'
+            'password' => 'required|string|confirmed|min:3',
+            'cpf' => 'required|string|unique:USUARIO,USUARIO_CPF|min:11'
         ]);
 
         $user = User::create([
             'USUARIO_NOME' => $request->name,
             'USUARIO_EMAIL' => $request->email,
             'USUARIO_SENHA' => Hash::make($request->password),
-            'USUARIO_CPF' => '11111111111'
+            'USUARIO_CPF' => $request->cpf
         ]);
 
         event(new Registered($user));

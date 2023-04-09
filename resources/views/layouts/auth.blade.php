@@ -37,8 +37,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+    {{-- Clave JS --}}
+    <script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
+
     {{-- Custom JS --}}
     <script src="{{ asset('js/api.js') }}"></script>
+    <script src="{{ asset('js/utils.js') }}"></script>
 
     {{-- JS views --}}
     @stack('scripts')

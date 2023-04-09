@@ -14,19 +14,39 @@
                 @csrf
                 <div class="col-12 mb-2">
                     <label class="form-label" for="name">Nome <span class="fw-bold text-danger">*</span></label>
-                    <input class="form-control" type="text" name="name" required>
+                    <input class="form-control" type="text" name="name" required value="{{ old('name') }}">
+                    @if($errors->get('name'))
+                        <div class="text-danger">
+                            {{ $errors->get('name')[0] }}
+                        </div>
+                    @endif
                 </div>
                 <div class="col-12 mb-2">
                     <label class="form-label" for="cpf">CPF <span class="fw-bold text-danger">*</span></label>
-                    <input class="form-control" type="text" name="cpf" required>
+                    <input class="form-control cpfMask" type="text" name="cpf" required minlength="14" maxlength="14" value="{{ old('cpf') }}">
+                    @if($errors->get('cpf'))
+                        <div class="text-danger">
+                            {{ $errors->get('cpf')[0] }}
+                        </div>
+                    @endif
                 </div>
                 <div class="col-12 mb-2">
                     <label class="form-label" for="email">E-mail <span class="fw-bold text-danger">*</span></label>
-                    <input class="form-control" type="email" name="email" required>
+                    <input class="form-control" type="email" name="email" required value="{{ old('email') }}">
+                    @if($errors->get('email'))
+                        <div class="text-danger">
+                            {{ $errors->get('email')[0] }}
+                        </div>
+                    @endif
                 </div>
                 <div class="col-12 mb-2">
                     <label class="form-label" for="password">Senha <span class="fw-bold text-danger">*</span></label>
                     <input class="form-control" type="password" name="password" required>
+                    @if($errors->get('password'))
+                        <div class="text-danger">
+                            {{ $errors->get('password')[0] }}
+                        </div>
+                    @endif
                 </div>
                 <div class="col-12 mb-2">
                     <label class="form-label" for="password_confirmation">Confirme sua senha <span class="fw-bold text-danger">*</span></label>
