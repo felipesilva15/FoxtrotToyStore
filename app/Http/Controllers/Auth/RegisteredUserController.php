@@ -30,10 +30,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if(isset($request->cpf)){
-            $request->cpf = preg_replace('/\D/', '', $request->cpf);
-        }
-
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:USUARIO,USUARIO_EMAIL|email',

@@ -10,7 +10,7 @@
             </a>
         </div>
         <div class="w-100 shadow rounded p-4" style="max-width: 450px">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" id="form">
                 @csrf
                 <div class="col-12 mb-2">
                     <label class="form-label" for="name">Nome <span class="fw-bold text-danger">*</span></label>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-12 mb-2">
                     <label class="form-label" for="cpf">CPF <span class="fw-bold text-danger">*</span></label>
-                    <input class="form-control cpfMask" type="text" name="cpf" required minlength="14" maxlength="14" value="{{ old('cpf') }}">
+                    <input class="form-control cpfMask" id="cpf" type="text" name="cpf" required minlength="14" maxlength="14" value="{{ old('cpf') }}">
                     @if($errors->get('cpf'))
                         <div class="text-danger">
                             {{ $errors->get('cpf')[0] }}
@@ -64,3 +64,11 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('#form').on('submit', (e) => {
+            $('#cpf').val($('#cpf').val().replace(/[^0-9]/g, ''));
+        })
+    </script>
+@endpush
