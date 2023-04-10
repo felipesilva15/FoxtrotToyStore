@@ -7,14 +7,18 @@
     margin: 0 auto;
     text-align: center;
     align-items: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 .carousel-item{
-    height: 400px;
+    height: 380px;
 }
 
 .carousel-item > img{
-    object-fit: contain;
+    display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 
