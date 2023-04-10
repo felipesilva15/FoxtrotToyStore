@@ -9,13 +9,22 @@
     align-items: center;
 }
 
+.carousel-item{
+    height: 400px;
+}
+
+.carousel-item > img{
+    object-fit: contain;
+}
+
+
 section h2{
     font-family: 'Comic Neue', cursive;
 }
 
 /* 2ª SESSÃO DA HOME */
 #segunda-secao{
-    background-color: #FFD6A1;
+    background-color: #bddbe625;
 }
 
 /* 3ª SESSÃO DA HOME */
