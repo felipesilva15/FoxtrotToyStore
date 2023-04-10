@@ -8,7 +8,7 @@
         <span class="text-secondary-emphasis">{{ $product->Category->CATEGORIA_NOME ?? '' }}</span>
         <div class="mt-2">
             <span class="fs-5 me-2">R$ {{ number_format($product->PRODUTO_PRECO - $product->PRODUTO_DESCONTO, 2, ',', '')}}</span>
-            @if($product->PRODUTO_DESCONTO ?? 0 != 0)
+            @if($product->PRODUTO_DESCONTO != 0)
                 <span class="text-secondary"><s>R$ {{ number_format($product->PRODUTO_PRECO ?? 0, 2, ',', '') }}</s></span>
             @endif
         </div>
