@@ -3,7 +3,7 @@
         @if ($product->PRODUTO_DESCONTO != 0)
             <div class="position-absolute">
                 <div class="py-1 px-2 bg-primary rounded m-1">
-                    <label class="text-light fs-7 fw-bold">-{{ round($product->PRODUTO_DESCONTO / ($product->PRODUTO_PRECO / 100), 0) }}%</label>
+                    <span class="text-light fs-7 fw-bold">-{{ round($product->PRODUTO_DESCONTO / ($product->PRODUTO_PRECO / 100), 0) }}%</span>
                 </div>
             </div>
         @endif
