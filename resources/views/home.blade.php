@@ -38,6 +38,12 @@
               </div>
             @endforeach
           </div>
+          <div class="d-flex align-items-end flex-column w-100">
+            <a href="#" class="d-flex align-items-center justify-content-center text-primary text-decoration-none">
+              <div class="fw-bold fs-5 me-1">Ver mais</div>
+              <div class="material-icons mt-1 hand-cursor">double_arrow</div>
+            </a>
+          </div>
         </div>
     </section>
     <section id="terceira-secao"  class="d-flex flex-column align-items-center py-5">
@@ -51,6 +57,12 @@
                 @include('components.product-card', $product)
               </div>
             @endforeach
+          </div>
+          <div class="d-flex align-items-end flex-column w-100">
+            <a href="#" class="d-flex align-items-center justify-content-center text-primary text-decoration-none">
+              <div class="fw-bold fs-5 me-1">Ver mais</div>
+              <div class="material-icons mt-1 hand-cursor">double_arrow</div>
+            </a>
           </div>
         </div>
     </section>
