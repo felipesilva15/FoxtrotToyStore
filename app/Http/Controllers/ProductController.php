@@ -8,9 +8,17 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){
-        $data = [
-            'products'=>Product::all()
+        $breadcrumbRoutes = [
+            ['name' => 'Home', 'url' => route('home')],
+            ['name' => 'Produtos', 'url' => url('/product')]
         ];
+
+        $data = [
+            'products'=>Product::all(),
+            'breadcrumbRoutes'=>$breadcrumbRoutes
+        ];
+
+        
 
         return view('products.product', $data);
     }
