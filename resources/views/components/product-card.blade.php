@@ -11,7 +11,7 @@
             <img class="w-100 image-fit" src="{{ isset($product->ProductImages[0]->IMAGEM_URL) ? $product->ProductImages[0]->IMAGEM_URL : asset('images/produto-sem-foto.jpg') }}" alt="Imagem do produto">
         </div>
         <div class="d-flex flex-column justify-content-start text-start mb-3 mt-2">
-            <span class="fw-bold fs-5" >{{ $product->PRODUTO_NOME ?? '' }}</span>
+            <span class="fw-bold fs-5 text-nowrap overflow-hidden" data-bs-toggle="tooltip" data-bs-title="Default tooltip">{{ $product->PRODUTO_NOME ?? '' }}</span>
             <span class="text-secondary-emphasis">{{ $product->Category->CATEGORIA_NOME ?? '' }}</span>
             <div class="mt-2">
                 <span class="fs-5 fw-bold me-1 text-primary">R$ {{ number_format($product->PRODUTO_PRECO - $product->PRODUTO_DESCONTO, 2, ',', '')}}</span>
