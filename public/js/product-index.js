@@ -31,7 +31,7 @@ function search(page){
     });
 
     // Price
-    if($('[name="price"]'))
+    if($('[name="price"]') && $('[name="price"]').val() < $('[name="price"]').attr('max'))
         urlParams.set('price', $('[name="price"]').val());
     
     // Sort

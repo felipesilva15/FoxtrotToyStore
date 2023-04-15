@@ -56,7 +56,7 @@
                             <span class="material-icons mt-1 ms-1 me-2 text-primary">apps</span>
                             <span class="fw-bold fs-5 me-2">Exibir</span>
                             <select class="form-select" id="per_page" name="per_page">
-                                <option value="12" {{ request('per_page') == 12 || !request('per_page') ? 'selected' : '' }}>12 por página</option>
+                                <option {{ !request('per_page') ? 'selected' : '' }}>12 por página</option>
                                 <option value="24" {{ request('per_page') == 24 ? 'selected' : '' }}>24 por página</option>
                                 <option value="32" {{ request('per_page') == 32 ? 'selected' : '' }}>32 por página</option>
                                 <option value="48" {{ request('per_page') == 48 ? 'selected' : '' }}>48 por página</option>
