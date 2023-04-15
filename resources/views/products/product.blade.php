@@ -42,7 +42,7 @@
                         <div class="d-flex align-items-center mb-1 col-4">
                             <span class="material-icons mt-1 ms-1 me-2 text-primary">swap_vert</span>
                             <span class="fw-bold fs-5 me-2">Ordenar</span>
-                            <select class="form-select" aria-label="Default select example" id="sort" name="sort">
+                            <select class="form-select" id="sort" name="sort">
                                 <option {{ !request('sort') ? 'selected' : '' }}>-- Selecione --</option>
                                 <option value="1" {{ request('sort') == 1 ? 'selected' : '' }}>Menor preço</option>
                                 <option value="2" {{ request('sort') == 2 ? 'selected' : '' }}>Maior preço</option>
@@ -52,8 +52,18 @@
                                 <option value="6" {{ request('sort') == 6 ? 'selected' : '' }}>Mais vendidos</option>
                             </select>
                         </div>
-                        <div class="d-flex justify-content-end align-items-center mb-1 offset-4 col-2">
-                            <span>Produtos: <span class="fw-bold">{{ count($products) }}</span></span>
+                        <div class="d-flex align-items-center mb-1 col-4">
+                            <span class="material-icons mt-1 ms-1 me-2 text-primary">apps</span>
+                            <span class="fw-bold fs-5 me-2">Exibir</span>
+                            <select class="form-select" id="per_page" name="per_page">
+                                <option value="12" {{ request('per_page') == 12 || !request('per_page') ? 'selected' : '' }}>12 por página</option>
+                                <option value="24" {{ request('per_page') == 24 ? 'selected' : '' }}>24 por página</option>
+                                <option value="32" {{ request('per_page') == 32 ? 'selected' : '' }}>32 por página</option>
+                                <option value="48" {{ request('per_page') == 48 ? 'selected' : '' }}>48 por página</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center mb-1 col-2">
+                            <span>Produtos: <span class="fw-bold">{{ $products->total() }}</span></span>
                         </div>
                         <div class="d-flex align-items-center mb-1 col-2">
                             <button class="btn btn-primary d-flex w-100 justify-content-center align-items-center" id="searchButton">
@@ -74,6 +84,25 @@
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-center py-4">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" id="previous-page" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                @for($i = 1; $i <= $products->lastPage(); $i++)
+                                    <li class="page-item"><a class="page-link page-link-button {{ request('page') == $i || (!request('page') && $i == 1) ? 'active' : '' }}" href="#" page_number="{{ $i }}">{{ $i }}</a></li>
+                                @endfor
+                                <li class="page-item">
+                                    <a class="page-link" id="next-page" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>

@@ -63,10 +63,12 @@ class ProductController extends Controller
                 break;
         }
 
+        $per_page = request('per_page') ? request('per_page') : 12;
+
         if(request('categories')){
-            $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->orderBy($sortField, $sortOrder)->get();
+            $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->orderBy($sortField, $sortOrder)->paginate($per_page);
         } else{
-            $products = Product::where($conditions)->orderBy($sortField, $sortOrder)->get();
+            $products = Product::where($conditions)->orderBy($sortField, $sortOrder)->paginate($per_page);
         }
 
         $data = [
