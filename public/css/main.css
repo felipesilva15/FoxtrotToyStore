@@ -91,3 +91,11 @@ body{
 .product-card:hover{
     top: -8px
 }
+
+input[type="range"]::-webkit-slider-thumb{
+    cursor: pointer;
+}
+
+.breadcrumb-link:hover{
+    color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important ;
+}

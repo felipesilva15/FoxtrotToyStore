@@ -52,13 +52,22 @@
                                 <option value="6" {{ request('sort') == 6 ? 'selected' : '' }}>Mais vendidos</option>
                             </select>
                         </div>
-                        <div class="d-flex align-items-center mb-1 offset-7 col-1">
-                            <button class="btn btn-primary" id="searchButton">Filtrar</button>
+                        <div class="d-flex justify-content-end align-items-center mb-1 offset-4 col-2">
+                            <span>Produtos: <span class="fw-bold">{{ count($products) }}</span></span>
+                        </div>
+                        <div class="d-flex align-items-center mb-1 col-2">
+                            <button class="btn btn-primary d-flex w-100 justify-content-center align-items-center" id="searchButton">
+                                <span class="fw-bold">Filtrar</span>
+                                <span class="material-icons ms-1 hand-cursor">search</span>
+                            </button>
                         </div>
                     </div>
                     <hr>
                     <div>
                         <div class="row">
+                            @if(count($products) == 0)
+                                <p class="text-center fw-bold fs-5">Nenhum produto encontrado!</p>
+                            @endif
                             @foreach ($products as $product)
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
                                     @include('components.product-card', $product)
