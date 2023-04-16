@@ -7,8 +7,6 @@
     margin: 0 auto;
     text-align: center;
     align-items: center;
-    margin-top: 70px;
-    margin-bottom: 70px;
 }
 
 .carousel-item{
@@ -16,7 +14,7 @@
 }
 
 .carousel-item > img{
-    display: flex;
+    display: block;
     height: 100%;
     width: 100%;
 }
