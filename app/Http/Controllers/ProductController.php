@@ -50,6 +50,10 @@ class ProductController extends Controller
             case 5:
                 $sortOption = 'CATEGORIA_NOME';
                 break;
+
+            case 7:
+                $sortOption = 'PRODUTO_DESCONTO / (PRODUTO_PRECO / 100) DESC';
+                break;
             
             default:
                 $sortOption = 'PRODUTO_ID';

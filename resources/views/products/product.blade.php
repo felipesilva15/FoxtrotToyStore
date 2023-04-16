@@ -50,6 +50,7 @@
                                 <option value="4" {{ request('sort') == 4 ? 'selected' : '' }}>Nome de Z-A</option>
                                 <option value="5" {{ request('sort') == 5 ? 'selected' : '' }}>Categoria</option>
                                 <option value="6" {{ request('sort') == 6 ? 'selected' : '' }}>Mais vendidos</option>
+                                <option value="7" {{ request('sort') == 7 ? 'selected' : '' }}>Melhores descontos</option>
                             </select>
                         </div>
                         <div class="d-flex align-items-center mb-1 col-4">
