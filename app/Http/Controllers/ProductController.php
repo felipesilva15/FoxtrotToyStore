@@ -18,8 +18,7 @@ class ProductController extends Controller
             ['PRODUTO_ATIVO', '1']
         ];
 
-        $sortField = '';
-        $sortOrder = '';
+        $sortOption = '';
 
         if(request('search')){
             array_push($conditions, ['PRODUTO_NOME', 'like', '%'.request('search').'%']);
@@ -33,42 +32,36 @@ class ProductController extends Controller
 
         switch (request('sort')) {
             case 1:
-                $sortField = 'PRODUTO_PRECO';
-                $sortOrder = 'asc';
+                $sortOption = 'PRODUTO_PRECO - PRODUTO_DESCONTO ASC';
                 break;
             
             case 2:
-                $sortField = 'PRODUTO_PRECO';
-                $sortOrder = 'desc';
+                $sortOption = 'PRODUTO_PRECO - PRODUTO_DESCONTO DESC';
                 break;
 
             case 3:
-                $sortField = 'PRODUTO_NOME';
-                $sortOrder = 'asc';
+                $sortOption = 'PRODUTO_NOME ASC';
                 break;
 
             case 4:
-                $sortField = 'PRODUTO_NOME';
-                $sortOrder = 'desc';
+                $sortOption = 'PRODUTO_NOME DESC';
                 break;
 
             case 5:
-                $sortField = 'CATEGORIA_NOME';
-                $sortOrder = 'asc';
+                $sortOption = 'CATEGORIA_NOME';
                 break;
             
             default:
-                $sortField = 'PRODUTO_ID';
-                $sortOrder = 'asc';
+                $sortOption = 'PRODUTO_ID';
                 break;
         }
 
         $per_page = request('per_page') ? request('per_page') : 12;
 
         if(request('categories')){
-            $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->orderBy($sortField, $sortOrder)->paginate($per_page);
+            $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->orderByRaw($sortOption)->paginate($per_page);
         } else{
-            $products = Product::where($conditions)->orderBy($sortField, $sortOrder)->paginate($per_page);
+            $products = Product::where($conditions)->orderByRaw($sortOption)->paginate($per_page);
         }
 
         $data = [

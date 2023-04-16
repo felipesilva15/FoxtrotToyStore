@@ -8,8 +8,36 @@ $('#priceRange').on('input', () => {
 
 $('#searchButton').on('click', (e) => {
     e.preventDefault();
-
     search();
+})
+
+$('#next-page').on('click', (e) => {
+    e.preventDefault();
+
+    const oldUrlParams = new URLSearchParams(window.location.search);
+
+    let page = oldUrlParams.get('page') ?? 1;
+    page++
+
+    search(page);
+})
+
+$('#previous-page').on('click', (e) => {
+    e.preventDefault();
+
+    const oldUrlParams = new URLSearchParams(window.location.search);
+
+    let page = oldUrlParams.get('page') ?? 1;
+    page = page >= 2 ? page -= 1 : page;
+
+    search(page);
+})
+
+$('.page-link-button').each((i, element) => {
+    $(element).on('click', (e) => {
+        e.preventDefault();
+        search($(element).attr('page_number'));
+    })
 })
 
 function calculatePriceRange(){
@@ -46,39 +74,6 @@ function search(page){
     if(page)
         urlParams.set('page', page);
 
+    // Redirect with query params
     window.location.href = `${location.pathname}?${urlParams.toString()}`
 }
-
-$('#next-page').on('click', (e) => {
-    e.preventDefault();
-
-    const oldUrlParams = new URLSearchParams(window.location.search);
-
-    let page = oldUrlParams.get('page') ?? 1;
-
-    page++
-
-    search(page);
-})
-
-$('#previous-page').on('click', (e) => {
-    e.preventDefault();
-
-    const oldUrlParams = new URLSearchParams(window.location.search);
-
-    let page = oldUrlParams.get('page') ?? 1;
-
-    if(page >= 2){
-        page -= 1;
-    }
-
-    search(page);
-})
-
-$('.page-link-button').each((i, element) => {
-    $(element).on('click', (e) => {
-        e.preventDefault();
-
-        search($(element).attr('page_number'));
-    })
-})
