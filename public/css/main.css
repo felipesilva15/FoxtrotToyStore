@@ -77,3 +77,25 @@ body{
     aspect-ratio: 9/9;
     object-fit: contain;
 }
+
+.fs-7{
+    font-size: 0.75rem;
+}
+
+.product-card{
+    position: relative;
+    top: 0;
+    transition: top ease 0.4s;
+}
+
+.product-card:hover{
+    top: -8px
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    cursor: pointer;
+}
+
+.breadcrumb-link:hover{
+    color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important ;
+}
