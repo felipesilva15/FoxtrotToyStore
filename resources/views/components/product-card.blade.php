@@ -25,12 +25,14 @@
 
             </div>
             <div class="d-flex justify-content-center">
-                <a href="{{ url('product/'.$product->PRODUTO_ID) }}" class="text-decoration-none w-100">
-                    <button class="btn btn-primary d-flex w-100 justify-content-center">
+                <form action="{{ url('cart/'.$product->PRODUTO_ID) }}" class="w-100" method="POST">
+                    @csrf
+                    @method('POST')
+                    <button type="submit" class="btn btn-primary d-flex w-100 justify-content-center">
                         <span class="material-icons md-24 me-1 hand-cursor">shopping_cart</span>
                         <span class="fw-bold">Comprar</span>
                     </button>
-                </a>
+                </form>
             </div>
         </div>
     </div>

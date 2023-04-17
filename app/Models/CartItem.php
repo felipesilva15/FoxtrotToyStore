@@ -10,11 +10,13 @@ class CartItem extends Model
     use HasFactory;
 
     protected $table = 'CARRINHO_ITEM'; // nome da tabela no banco de dados
+    protected $fillable = ['USUARIO_ID', 'PRODUTO_ID', 'ITEM_QTD'];
+    public $timestamps = false;
 
     // Relacionamento com a tabela de produtos
     public function produto()
     {
-        return $this->belongsTo(Produto::class, 'produto_id');
+        return $this->belongsTo('App\Models\Product', 'PRODUTO_ID', 'PRODUTO_ID');
     }
 
     // Relacionamento com a tabela de usuários

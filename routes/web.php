@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product', [ProductController::class, 'index'])->name('product');
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,6 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
 
