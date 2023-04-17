@@ -18,7 +18,7 @@ class HomeController extends Controller
             $productsBestSellings = Product::where('PRODUTO_ATIVO', '1')->take(12)->get();
         }
 
-        $productsBestDiscounts = Product::where('PRODUTO_ATIVO', '1')->orderBy('PRODUTO_DESCONTO', 'desc')->take(12)->get();
+        $productsBestDiscounts = Product::where('PRODUTO_ATIVO', '1')->orderByRaw('PRODUTO_DESCONTO / (PRODUTO_PRECO / 100) DESC')->take(12)->get();
 
         return view('home', [
             'productsBestDiscounts' => $productsBestDiscounts,
