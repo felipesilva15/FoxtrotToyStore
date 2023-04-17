@@ -24,4 +24,11 @@ class CartItem extends Model
     {
         return $this->belongsTo(Usuario::class, 'usuario_id');
     }
+
+    protected function setKeysForSaveQuery($query){
+        $query->where('USUARIO_ID', $this->getAttribute('USUARIO_ID'))
+              ->where('PRODUTO_ID', $this->getAttribute('PRODUTO_ID'));
+
+        return $query;
+    }
 }

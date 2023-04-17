@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CartItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -34,28 +35,43 @@ class CartController extends Controller
         ]);
     }
 
-    public function store(int $product){
-        CartItem::create([
-            'USUARIO_ID' => Auth::user()->USUARIO_ID,
-            'PRODUTO_ID' => $product,
-            'ITEM_QTD' => 1
-        ]);
+    public function store(Product $product){
+        $item = CartItem::where([
+            ['USUARIO_ID', Auth::user()->USUARIO_ID],
+            ['PRODUTO_ID', $product->PRODUTO_ID]
+        ])->first();
+
+        if($item){
+            $item->update([
+                'ITEM_QTD' => $item->ITEM_QTD + 1
+            ]);
+        } else{
+            CartItem::create([
+                'USUARIO_ID' => Auth::user()->USUARIO_ID,
+                'PRODUTO_ID' => $product->PRODUTO_ID,
+                'ITEM_QTD' => 1
+            ]);
+        }
 
         return redirect(route('cart'))->with('message', 'Item adicionado ao carrinho');
     }
 
-    public function destroy($product){
+    public function destroy(Product $product){
         $cartItem = CartItem::where([
-            ['PRODUTO_ID', $product],
+            ['PRODUTO_ID', $product->PRODUTO_ID],
             ['USUARIO_ID', Auth::user()->USUARIO_ID]
         ]);
 
         $cartItem->update([
-            'USUARIO_ID' => Auth::user()->USUARIO_ID,
-            'PRODUTO_ID' => $product,
             'ITEM_QTD' => 0
         ]);
 
         return redirect(route('cart'))->with('error', 'Item removido do carrinho');
+    }
+
+    public function searchQtyItems(){
+        $qtyItems = CartItem::where('USUARIO_ID', Auth::user()->USUARIO_ID)->sum('ITEM_QTD');
+
+        return view('components.cartQtyItems', ['qtyItems' => $qtyItems]);
     }
 }

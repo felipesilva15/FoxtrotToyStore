@@ -10,6 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $table = "PRODUTO";
+    protected $primaryKey = 'PRODUTO_ID';
 
     public function ProductImages(){
         return $this->hasMany('App\Models\ProductImage', 'PRODUTO_ID', 'PRODUTO_ID');

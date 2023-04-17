@@ -11,8 +11,8 @@
       @if(!$cartItems->isEmpty())
         <div class="d-flex flex-column">
           <div class="d-flex align-items-center mb-4">
-            <span class="material-icons ms-1 me-2 text-primary">shopping_basket</span>
-            <span class="fw-bold fs-5">Produtos</span>
+            <span class="material-icons ms-1 me-2 md-24 text-primary">shopping_basket</span>
+            <span class="fw-bold fs-4">Produtos</span>
           </div>
           @foreach ($cartItems as $item)
             <div class="w-100 d-flex">
@@ -60,8 +60,8 @@
     </div>
     <div class="mt-5 shadow rounded p-4 container">
       <div class="d-flex align-items-center mb-4">
-        <span class="material-icons mt-1 ms-1 me-2 text-primary">list_alt</span>
-        <span class="fw-bold fs-5">Resumo do pedido</span>
+        <span class="material-icons mt-1 ms-1 me-2 md-24 text-primary">list_alt</span>
+        <span class="fw-bold fs-4">Resumo do pedido</span>
       </div>
       <div>
         <div class="row">
