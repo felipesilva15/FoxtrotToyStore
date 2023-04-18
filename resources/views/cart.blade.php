@@ -55,7 +55,7 @@
           @endforeach
         </div>
       @else
-        <p class="text-center fs-5">O carrinho está vazio. <a href="{{ route('product') }}">Ir as compras</a></p>
+        <p class="text-center fs-5 m-0">O carrinho está vazio. <a href="{{ route('product') }}">Ir as compras</a></p>
       @endif
     </div>
     <div class="mt-5 shadow rounded p-4 container">
