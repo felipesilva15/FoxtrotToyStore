@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'USUARIO_SENHA'
     ];
+
+    public function Orders(){
+        return $this->hasMany('App\Models\Order', 'USUARIO_ID', 'USUARIO_ID');
+    }
+
+    public function CartItems(){
+        return $this->hasMany('App\Models\CartItem', 'USUARIO_ID', 'USUARIO_ID');
+    }
 }
