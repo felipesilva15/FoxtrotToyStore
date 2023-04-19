@@ -21,6 +21,14 @@ class OrderItem extends Model
         return $this->belongsTo('App\Models\Order', 'PEDIDO_ID', 'PEDIDO_ID');
     }
 
+    public function OrderTotal(){
+        return $this->OrderItems->sum('ITEM_QTD') * $this->OrderItems->sum('ITEM_PRECO');
+    }
+
+    public function ItemTotal(){
+        return number_format(($this->product->PRODUTO_PRECO - $this->product->PRODUTO_DESCONTO) * $this->ITEM_QTD, 2, ',', '.');
+    }
+
     protected function setKeysForSaveQuery($query){
         $query->where('PEDIDO_ID', $this->getAttribute('PEDIDO_ID'))
               ->where('PRODUTO_ID', $this->getAttribute('PRODUTO_ID'));

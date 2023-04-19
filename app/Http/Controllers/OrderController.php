@@ -14,11 +14,19 @@ class OrderController extends Controller
     }
 
     public function show(Order $order){
+        if($order->User->USUARIO_ID != Auth::user()->USUARIO_ID){
+            return abort(404);
+        }
+
         return view('order.show', ['order' => $order]);
     }
 
     public function store(){
         $user = Auth::user();
+
+        if(!Auth::user()->CartItems->sum('ITEM_QTD')){
+            return back()->with('error', 'Insira ao menos um item no carrinho para finalizar o pedido!');
+        }
 
         // Cria o pedido
         $order = Order::create([
@@ -29,6 +37,10 @@ class OrderController extends Controller
 
         // Cria os itens do pedido e os retira do carrinho
         foreach ($user->CartItems as $item) {
+            if(!$item->ITEM_QTD){
+                continue;
+            }
+
             OrderItem::create([
                 'PEDIDO_ID' => $order->PEDIDO_ID,
                 'PRODUTO_ID' => $item->PRODUTO_ID,

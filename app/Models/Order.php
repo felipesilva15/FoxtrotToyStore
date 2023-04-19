@@ -27,6 +27,24 @@ class Order extends Model
     }
 
     public function OrderItems(){
-        return $this->hasMany('App\Models\OrderItems', 'PEDIDO_ID', 'PEDIDO_ID');
+        return $this->hasMany('App\Models\OrderItem', 'PEDIDO_ID', 'PEDIDO_ID');
+    }
+
+    public function OrderNumber(){
+        return '#'.str_pad($this->PEDIDO_ID, 6, '0', STR_PAD_LEFT);
+    }
+
+    public function Date(){
+        return date('d/m/Y', strtotime($this->PEDIDO_DATA));
+    }
+
+    public function OrderQtyItems(){
+        return number_format($this->OrderItems->sum('ITEM_QTD'), 0, '', '.');
+    }
+
+    public function OrderTotal(){
+        return number_format($this->OrderItems->sum(function ($item) {
+            return $item->ITEM_QTD * $item->ITEM_PRECO;
+        }), 2, ',', '.');
     }
 }

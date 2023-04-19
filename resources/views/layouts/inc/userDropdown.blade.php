@@ -5,7 +5,7 @@
     @auth
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Meus pedidos</a></li>
+            <li><a class="dropdown-item" href="{{ route('order') }}">Meus pedidos</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
                 <form action="{{ route('logout') }}" method="post">

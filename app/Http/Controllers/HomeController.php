@@ -10,10 +10,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $productsAuxCode = DB::select('SELECT ITE.PRODUTO_ID FROM PEDIDO_ITEM ITE GROUP BY ITE.PRODUTO_ID ORDER BY SUM(COALESCE(ITE.ITEM_QTD, 0)) DESC');
+        $productsAux = DB::select('SELECT ITE.PRODUTO_ID FROM PEDIDO_ITEM ITE GROUP BY ITE.PRODUTO_ID ORDER BY SUM(COALESCE(ITE.ITEM_QTD, 0)) DESC');
+        $productsIds = [];
 
-        if(count($productsAuxCode) != 0){
-            $productsBestSellings = Product::where('PRODUTO_ATIVO', '1')->whereIn('PRODUTO_ID', $productsAuxCode)->take(12)->get();
+        foreach ($productsAux as $product) {
+            array_push($productsIds, $product->PRODUTO_ID);
+        }
+
+        if(count($productsIds) != 0){
+            $productsBestSellings = Product::where('PRODUTO_ATIVO', '1')->whereIn('PRODUTO_ID', $productsIds)->take(12)->get();
         } else{
             $productsBestSellings = Product::where('PRODUTO_ATIVO', '1')->take(12)->get();
         }

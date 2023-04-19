@@ -99,3 +99,7 @@ input[type="range"]::-webkit-slider-thumb{
 .breadcrumb-link:hover{
     color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important ;
 }
+
+.w-min{
+    width: min-content;
+}

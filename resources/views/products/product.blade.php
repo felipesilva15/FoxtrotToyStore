@@ -5,10 +5,10 @@
 @section('content')
     <section class="my-5">
         <div class="container">
-            <div class="bg-light rounded-5 p-5 m-auto" style="width: min-content">
+            <div class="bg-light rounded-5 p-5 m-auto w-min">
                 <h2 class="">Produtos</h2>
             </div>
-            <div class="mx-auto my-4" style="width: min-content">
+            <div class="mx-auto my-4 w-min">
                 @include('components.breadcrumb', $breadcrumbRoutes)
             </div>
             <div class="row">
