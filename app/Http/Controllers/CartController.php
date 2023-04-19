@@ -29,7 +29,7 @@ class CartController extends Controller
         }
 
         // Retornar a view do carrinho de compras com os itens encontrados
-        return view('cart', [
+        return view('cart.cart', [
             'cartItems' => $cartItems,
             'totalizer' => $totalizer
         ]);

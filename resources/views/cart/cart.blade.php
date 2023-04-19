@@ -82,7 +82,11 @@
           <span class="col-2 text-primary">R$ {{ number_format($totalizer['TOTAL'], 2, ',', '') }}</span>
         </div>
         <div class="d-flex align-items-stretch mt-3 flex-wrap">
-          <a href="#" class="btn btn-primary me-2">Finalizar compra</a>
+          <form action="{{ route('order.store') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-primary me-2">Finalizar compra</button>
+          </form>
+          
           <a href="{{ route('product') }}" class="btn btn-outline-primary">Continuar comprando</a>
         </div>
       </div>

@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $table = 'PEDIDO';
     protected $primaryKey = 'PEDIDO_ID';
-    protected $fillable = ['PEDIDO_ID', 'USUARIO_ID', 'STATUS_ID', 'PEDIDO_DATA'];
+    protected $fillable = ['USUARIO_ID', 'STATUS_ID', 'PEDIDO_DATA'];
     public $timestamps = false;
     protected $casts = [
         'PEDIDO_DATA' => 'date'
