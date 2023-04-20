@@ -76,34 +76,37 @@
                     <hr>
                     <div>
                         <div class="row">
-                            @if(count($products) == 0)
+                            @if(count($products))
+                                @foreach ($products as $product)
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
+                                        @include('components.product-card', $product)
+                                    </div>
+                                @endforeach
+                                <div class="d-flex justify-content-center py-4">
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination">
+                                            <li class="page-item {{ $products->currentPage() == 1 ? 'disabled' : '' }}">
+                                                <a class="page-link" id="previous-page" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            @for($i = 1; $i <= $products->lastPage(); $i++)
+                                                <li class="page-item">
+                                                    <a class="page-link page-link-button {{ $products->currentPage() == $i ? 'active' : '' }}" href="#" page_number="{{ $i }}">{{ $i }}</a>
+                                                </li>
+                                            @endfor
+                                            <li class="page-item {{ $products->currentPage() == $products->lastPage() ? 'disabled' : '' }}">
+                                                <a class="page-link" id="next-page" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            @else
                                 <p class="text-center fw-bold fs-5">Nenhum produto encontrado!</p>
                             @endif
-                            @foreach ($products as $product)
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
-                                    @include('components.product-card', $product)
-                                </div>
-                            @endforeach
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center py-4">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" id="previous-page" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                @for($i = 1; $i <= $products->lastPage(); $i++)
-                                    <li class="page-item"><a class="page-link page-link-button {{ request('page') == $i || (!request('page') && $i == 1) ? 'active' : '' }}" href="#" page_number="{{ $i }}">{{ $i }}</a></li>
-                                @endfor
-                                <li class="page-item">
-                                    <a class="page-link" id="next-page" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
