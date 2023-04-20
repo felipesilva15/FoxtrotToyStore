@@ -29,6 +29,10 @@ class CartItem extends Model
         return $this->sum('ITEM_QTD') * $this->produto->PRODUTO_PRECO;
     }
 
+    public function QtyItems(){
+        return $this->sum('ITEM_QTD');
+    }
+
     protected function setKeysForSaveQuery($query){
         $query->where('USUARIO_ID', $this->getAttribute('USUARIO_ID'))
               ->where('PRODUTO_ID', $this->getAttribute('PRODUTO_ID'));

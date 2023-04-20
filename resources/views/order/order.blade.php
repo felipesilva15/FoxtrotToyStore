@@ -16,7 +16,7 @@
             </div>
         </div> --}}
         <div class="container shadow rounded p-4 mt-5">
-            @if (!$orders->isEmpty())
+            @if (count($orders))
                 <div class="d-flex flex-column">
                     <div class="d-flex align-items-center mb-4">
                         <span class="material-icons ms-1 me-2 md-24 text-primary">list_alt</span>

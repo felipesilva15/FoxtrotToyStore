@@ -68,10 +68,4 @@ class CartController extends Controller
 
         return redirect(route('cart'))->with('error', 'Item removido do carrinho');
     }
-
-    public function searchQtyItems(){
-        $qtyItems = CartItem::where('USUARIO_ID', Auth::user()->USUARIO_ID)->sum('ITEM_QTD');
-
-        return view('components.cartQtyItems', ['qtyItems' => $qtyItems]);
-    }
 }

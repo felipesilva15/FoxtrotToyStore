@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     public function index(){
-        return view('order.order', ['orders' => Auth::user()->Orders]);
+        $orders = Auth::user()->Orders->sortByDesc('PEDIDO_ID')->values()->all();
+
+        return view('order.order', ['orders' => $orders]);
     }
 
     public function show(Order $order){
