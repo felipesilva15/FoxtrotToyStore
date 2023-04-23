@@ -31,11 +31,13 @@
               </div>
               <div class="d-flex flex-column mx-3 align-items-center">
                 <span>Qtd.</span>
-                <div class="d-flex justify-content-center align-items-center mb-3">
-                  <span class="material-icons hand-cursor">chevron_left</span>
+                <form class="d-flex justify-content-center align-items-center mb-3 form-qty" method="post" action="{{ route('cart.store', ['product' => $item->produto->PRODUTO_ID]) }}">
+                  @csrf
+                  <button type="submit" class="btn btn-link text-reset text-decoration-none p-0 material-icons hand-cursor custom-hover-link remove-qty-item {{ $item->ITEM_QTD == 1 ? 'disabled' : '' }}">chevron_left</button>
                   <span class="fw-bold mx-2">{{ $item->ITEM_QTD }}</span>
-                  <span class="material-icons hand-cursor">chevron_right</span>
-                </div>
+                  <button type="submit" class="btn btn-link text-reset text-decoration-none p-0 material-icons hand-cursor custom-hover-link add-qty-item">chevron_right</button>
+                  <input type="hidden" name="qtyItem" value="{{ $item->ITEM_QTD }}">
+                </form>
                 <div>
                   <form action="{{ url('cart/'.$item->PRODUTO_ID) }}" method="POST">
                     @csrf
@@ -93,3 +95,7 @@
     </div>
   </section>
 @endsection
+
+@push('scripts')
+  <script src="js/cart.js"></script>
+@endpush

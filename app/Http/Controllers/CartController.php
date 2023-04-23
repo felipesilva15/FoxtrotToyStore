@@ -35,25 +35,36 @@ class CartController extends Controller
         ]);
     }
 
-    public function store(Product $product){
+    public function store(Product $product, Request $request){
         $item = CartItem::where([
             ['USUARIO_ID', Auth::user()->USUARIO_ID],
             ['PRODUTO_ID', $product->PRODUTO_ID]
         ])->first();
 
+        $qtyItem = $request->qtyItem ? $request->qtyItem : 1;
+        $message = '';
+
         if($item){
+            if(!$item->ITEM_QTD){
+                $message = 'Item adicionado ao carrinho';
+            } else{
+                $message = 'Quantidade do item atualizada';
+            }
+
             $item->update([
-                'ITEM_QTD' => $item->ITEM_QTD + 1
+                'ITEM_QTD' => $qtyItem
             ]);
         } else{
             CartItem::create([
                 'USUARIO_ID' => Auth::user()->USUARIO_ID,
                 'PRODUTO_ID' => $product->PRODUTO_ID,
-                'ITEM_QTD' => 1
+                'ITEM_QTD' => $qtyItem
             ]);
+
+            $message = 'Item adicionado ao carrinho';
         }
 
-        return redirect(route('cart'))->with('message', 'Item adicionado ao carrinho');
+        return redirect(route('cart'))->with('message', $message);
     }
 
     public function destroy(Product $product){
