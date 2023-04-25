@@ -6,16 +6,18 @@ let port = window.location.port && window.location.port != '' ? ':' + window.loc
 let urlApi = `${protocol}//${host}${port}/api`;
 
 // Realiza uma requisição de um arquivo do projeto sem retornar um conjunto de dados
-api.request = (url, method, data) => {
+api.request = (url, method, data, notInternal) => {
+    url =  notInternal ? url : `${urlApi}${url}`;
+
     const promisse = new Promise((resolve, reject) => {
         $.ajax({
-            url: `${urlApi}${url}`,
+            url: url,
             type: method,
             data: data,
             processData: false,
             contentType: false,
             headers: {
-                'Cache-Control': 'no-cache, no-store, must-revalidate'
+                'Content-Type': 'application/json'
             },
             success: (res) => {
                 if (res === undefined) {

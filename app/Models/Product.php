@@ -19,4 +19,8 @@ class Product extends Model
     public function Category(){
         return $this->belongsTo('App\Models\Category', 'CATEGORIA_ID', 'CATEGORIA_ID');
     }
+
+    public function ProductStock(){
+        return $this->hasOne('App\Models\ProductStock', 'PRODUTO_ID', 'PRODUTO_ID');
+    }
 }
