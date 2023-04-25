@@ -37,12 +37,13 @@ class OrderController extends Controller
             'PEDIDO_DATA' => now()
         ]);
 
-        // Cria os itens do pedido e os retira do carrinho
+        // Realiza atualização dos itens e estoque
         foreach ($user->CartItems as $item) {
             if(!$item->ITEM_QTD){
                 continue;
             }
 
+            //Cria o item do pedido
             OrderItem::create([
                 'PEDIDO_ID' => $order->PEDIDO_ID,
                 'PRODUTO_ID' => $item->PRODUTO_ID,
@@ -50,6 +51,14 @@ class OrderController extends Controller
                 'ITEM_PRECO' => ($item->produto->PRODUTO_PRECO - $item->produto->PRODUTO_DESCONTO)
             ]);
 
+            // Atualiza a quantidade de estoque do produto
+            if(isset($item->produto->ProductStock)){
+                $item->produto->ProductStock->update([
+                    'PRODUTO_QTD' => $item->produto->ProductStock->PRODUTO_QTD - $item->ITEM_QTD
+                ]);
+            }
+
+            // Retira o item do carrinho
             $item->update([
                 'ITEM_QTD' => 0
             ]);
