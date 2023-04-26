@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-flex flex-column justify-content-center align-items-center full-vh">
         <div class="mb-3">
-            <a href="{{ url('/') }}">
+            <a href="{{ route('home') }}">
                 <img src="{{ asset('images/logo.png') }}" width="160px" alt="">
             </a>
         </div>

@@ -44,13 +44,9 @@
                             <span class="fw-bold fs-5 me-2">Ordenar</span>
                             <select class="form-select" id="sort" name="sort">
                                 <option {{ !request('sort') ? 'selected' : '' }}>-- Selecione --</option>
-                                <option value="1" {{ request('sort') == 1 ? 'selected' : '' }}>Menor preço</option>
-                                <option value="2" {{ request('sort') == 2 ? 'selected' : '' }}>Maior preço</option>
-                                <option value="3" {{ request('sort') == 3 ? 'selected' : '' }}>Nome de A-Z</option>
-                                <option value="4" {{ request('sort') == 4 ? 'selected' : '' }}>Nome de Z-A</option>
-                                <option value="5" {{ request('sort') == 5 ? 'selected' : '' }}>Categoria</option>
-                                <option value="6" {{ request('sort') == 6 ? 'selected' : '' }}>Mais vendidos</option>
-                                <option value="7" {{ request('sort') == 7 ? 'selected' : '' }}>Melhores descontos</option>
+                                @foreach (App\Models\Product::SortOptions() as $sortOption)
+                                    <option value="{{ $loop->index + 1 }}" {{ request('sort') == $loop->index + 1 ? 'selected' : '' }}>{{ $sortOption }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="d-flex align-items-center mb-1 col-4">
@@ -58,9 +54,9 @@
                             <span class="fw-bold fs-5 me-2">Exibir</span>
                             <select class="form-select" id="per_page" name="per_page">
                                 <option {{ !request('per_page') ? 'selected' : '' }}>12 por página</option>
-                                <option value="24" {{ request('per_page') == 24 ? 'selected' : '' }}>24 por página</option>
-                                <option value="32" {{ request('per_page') == 32 ? 'selected' : '' }}>32 por página</option>
-                                <option value="48" {{ request('per_page') == 48 ? 'selected' : '' }}>48 por página</option>
+                                @foreach (App\Models\Product::PerPageOptions() as $optionValue)
+                                    <option value="{{ $optionValue }}" {{ request('per_page') == $optionValue ? 'selected' : '' }}>{{ $optionValue }} por página</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="d-flex justify-content-end align-items-center mb-1 col-2">

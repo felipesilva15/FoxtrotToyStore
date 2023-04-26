@@ -35,7 +35,7 @@
 <body>
     <header class="bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center px-5 py-2">
-            <a href="{{ url('/') }}">
+            <a href="{{ route('home') }}">
                 <div class="logo p-1">
                     <img src="{{ asset('images/Logo.png') }}" class="default-size" alt="Logo">
                 </div>
@@ -56,7 +56,7 @@
         <div class="container d-flex flex-column pt-5 text-light">
             <div class="d-flex justify-content-between flex-column flex-md-row mb-4 gap-5">
                 <div class="mx-1">
-                    <a href="{{ url('/') }}">
+                    <a href="{{ route('home') }}">
                         <div class="logo p-1">
                             <img src="{{ asset('images/Logo.png') }}" class="default-size" alt="Logo">
                         </div>

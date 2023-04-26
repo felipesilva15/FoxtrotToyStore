@@ -59,7 +59,7 @@
             @endforeach
           </div>
           <div class="d-flex align-items-end flex-column w-100">
-            <a href="{{ url('/product?sort=7') }}" class="d-flex align-items-center justify-content-center text-primary text-decoration-none">
+            <a href="{{ route('product', ['sort' => '7']) }}" class="d-flex align-items-center justify-content-center text-primary text-decoration-none">
               <div class="fw-bold fs-5 me-1">Ver mais</div>
               <div class="material-icons mt-1 hand-cursor">double_arrow</div>
             </a>

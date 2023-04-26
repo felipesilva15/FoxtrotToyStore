@@ -23,4 +23,20 @@ class Product extends Model
     public function ProductStock(){
         return $this->hasOne('App\Models\ProductStock', 'PRODUTO_ID', 'PRODUTO_ID');
     }
+
+    public static function PerPageOptions(){
+        return [24, 32, 48];
+    }
+
+    public static function SortOptions(){
+        return [
+            1 => 'Menor preço',
+            2 => 'Maior preço',
+            3 => 'Nome de A-Z',
+            4 => 'Nome de Z-A',
+            5 => 'Categoria',
+            6 => 'Mais vendidos',
+            7 => 'Melhores descontos'
+        ];
+    }
 }

@@ -43,7 +43,7 @@
                   <input type="hidden" name="qtyItem" value="{{ $item->ITEM_QTD }}">
                 </form>
                 <div>
-                  <form action="{{ url('cart/'.$item->PRODUTO_ID) }}" method="POST">
+                  <form action="{{ route('cart.store', ['product' => $item->PRODUTO_ID]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger material-icons md-24">delete</button>

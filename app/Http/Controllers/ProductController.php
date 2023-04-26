@@ -9,26 +9,41 @@ use App\Models\Category;
 class ProductController extends Controller
 {
     public function index(){
+        // Breadcrumb
         $breadcrumbRoutes = [
             ['name' => 'Home', 'url' => route('home')],
-            ['name' => 'Produtos', 'url' => url('/product')]
+            ['name' => 'Produtos', 'url' => route('product')]
         ];
 
+        if(request('categories')){
+            $categories = Category::whereIn('CATEGORIA_ID', request('categories'))->get();
+
+            if(count(request('categories')) > 1){
+                array_push($breadcrumbRoutes, ['name' => 'Diversas categorias', 'url' => route('product', ['categories' => request('categories')])]);
+            } else{
+                array_push($breadcrumbRoutes, ['name' => ucwords($categories[0]->CATEGORIA_NOME), 'url' => route('product', ['categories[]' => $categories[0]->CATEGORIA_ID])]);
+            }
+        }
+
+        // Conditions / Where
         $conditions = [
             ['PRODUTO_ATIVO', '1']
         ];
 
-        $sortOption = '';
-
+        // Product name
         if(request('search')){
             array_push($conditions, ['PRODUTO_NOME', 'like', '%'.request('search').'%']);
 
-            array_push($breadcrumbRoutes, ['name' => ucwords(request('search')), 'url' => url('/product?search='.request('search'))]);
+            array_push($breadcrumbRoutes, ['name' => ucwords(request('search')), 'url' => route('product', ['search' => request('search')])]);
         }
 
+        // Price
         if(request('price')){
             array_push($conditions, ['PRODUTO_PRECO', '<=', request('price')]);
         }
+
+        // Sort / Order by
+        $sortOption = '';
 
         switch (request('sort')) {
             case 1:
@@ -60,7 +75,12 @@ class ProductController extends Controller
                 break;
         }
 
-        $per_page = request('per_page') ? request('per_page') : 12;
+        // Per page / Page controller
+        if(!request('per_page') || !in_array(request('per_page'), Product::PerPageOptions())){
+            $per_page = 12;
+        } else{
+            $per_page = request('per_page');
+        }
 
         if(request('categories')){
             $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->orderByRaw($sortOption)->paginate($per_page);
@@ -68,6 +88,7 @@ class ProductController extends Controller
             $products = Product::where($conditions)->orderByRaw($sortOption)->paginate($per_page);
         }
 
+        // Define data to send for view
         $data = [
             'products' => $products,
             'breadcrumbRoutes' => $breadcrumbRoutes,
