@@ -12,7 +12,7 @@
                 @include('components.breadcrumb', $breadcrumbRoutes)
             </div>
             <div class="row">
-                <div class="pe-3 col-2">
+                <div class="col-2 ps-0">
                     <div class="d-flex align-items-center mb-1">
                         <span class="material-icons mt-1 ms-1 me-2 text-primary">tune</span>
                         <span class="fw-bold fs-5">Filtros</span>
@@ -31,13 +31,13 @@
                             @foreach ($categories as $category)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $category->CATEGORIA_ID }}" id="catFilter{{ $category->CATEGORIA_ID }}" name="categories[]" {{ request('categories') && in_array($category->CATEGORIA_ID, request('categories')) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="catFilter{{ $category->CATEGORIA_ID }}">{{ $category->CATEGORIA_NOME }}</label>
+                                    <label class="form-check-label fs-6" for="catFilter{{ $category->CATEGORIA_ID }}">{{ $category->CATEGORIA_NOME . '(' . count($category->AvaiableProducts()) . ')' }}</label>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="col-10">
+                <div class="ps-2 col-10">
                     <div class="row">
                         <div class="d-flex align-items-center mb-1 col-4">
                             <span class="material-icons mt-1 ms-1 me-2 text-primary">swap_vert</span>

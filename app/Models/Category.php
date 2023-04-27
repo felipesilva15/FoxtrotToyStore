@@ -11,8 +11,15 @@ class Category extends Model
 
     protected $table = 'CATEGORIA';
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
+    public function products(){
+        return $this->hasMany('App\Models\Product', 'CATEGORIA_ID', 'CATEGORIA_ID');
     }
+
+    public function AvaiableProducts(int $qtyToTake = 0){
+        if($qtyToTake){
+            return $this->products->where('PRODUTO_ATIVO', 1)->take($qtyToTake);
+        } else{
+            return $this->products->where('PRODUTO_ATIVO', 1);
+        }
+    } 
 }

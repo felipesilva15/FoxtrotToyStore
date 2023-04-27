@@ -44,6 +44,10 @@ class CartController extends Controller
         $qtyItem = $request->qtyItem ? $request->qtyItem : 1;
         $message = '';
         
+        if($product->PRODUTO_ATIVO == 0){
+            return back()->with('error', 'Produto indisponível');
+        }
+
         if(!isset($product->ProductStock->PRODUTO_QTD) || $product->ProductStock->PRODUTO_QTD < $qtyItem){
             return back()->with('error', 'Quantidade em estoque indisponível');
         }

@@ -1,4 +1,4 @@
-<a href="{{ route('product', ['categories[]' => $product->category->CATEGORIA_ID]) }}" class="text-decoration-none text-reset">
+<a href="{{ url('product/'.$product->PRODUTO_ID) }}" class="text-decoration-none text-reset">
     <div class="d-flex flex-column bg-white rounded p-2 shadow m-3 align-self-stretch product-card">
         @if ($product->PRODUTO_DESCONTO != 0 && isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
             <div class="position-absolute">
