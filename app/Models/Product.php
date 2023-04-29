@@ -24,6 +24,10 @@ class Product extends Model
         return $this->hasOne('App\Models\ProductStock', 'PRODUTO_ID', 'PRODUTO_ID');
     }
 
+    public function OrderItems(){
+        return $this->hasMany('App\Models\OrderItem', 'PRODUTO_ID', 'PRODUTO_ID');
+    }
+
     public static function PerPageOptions(){
         return [24, 32, 48];
     }

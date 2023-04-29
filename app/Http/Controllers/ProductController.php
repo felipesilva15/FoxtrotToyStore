@@ -66,6 +66,10 @@ class ProductController extends Controller
                 $sortOption = 'CATEGORIA_NOME';
                 break;
 
+            case 6:
+                $sortOption = '`order_items_sum_item_qtd` DESC';
+                break;
+
             case 7:
                 $sortOption = 'PRODUTO_DESCONTO / (PRODUTO_PRECO / 100) DESC';
                 break;
@@ -83,9 +87,9 @@ class ProductController extends Controller
         }
 
         if(request('categories')){
-            $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->orderByRaw($sortOption)->paginate($per_page);
+            $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->withSum('OrderItems', 'item_qtd')->orderByRaw($sortOption)->paginate($per_page);
         } else{
-            $products = Product::where($conditions)->orderByRaw($sortOption)->paginate($per_page);
+            $products = Product::where($conditions)->withSum('OrderItems', 'item_qtd')->orderByRaw($sortOption)->paginate($per_page);
         }
 
         // Define data to send for view
