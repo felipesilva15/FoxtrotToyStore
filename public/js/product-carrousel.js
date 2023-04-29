@@ -7,7 +7,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     let scrollPosition = 0;
 
     $("#product-carrousel .carousel-control-next").on("click", function () {
-        if (scrollPosition < carouselWidth - cardWidth * 4) {
+        if (scrollPosition < carouselWidth - cardWidth * 5) {
             scrollPosition += cardWidth;
             $("#product-carrousel .carousel-inner").animate(
                 { scrollLeft: scrollPosition },

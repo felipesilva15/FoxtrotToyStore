@@ -1,5 +1,5 @@
 <a href="{{ url('product/'.$product->PRODUTO_ID) }}" class="text-decoration-none text-reset">
-    <div class="d-flex flex-column bg-white rounded p-2 shadow m-3 align-self-stretch product-card">
+    <div class="d-flex flex-column bg-white rounded p-2 shadow m-2 align-self-stretch product-card">
         @if ($product->PRODUTO_DESCONTO != 0 && isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
             <div class="position-absolute">
                 <div class="py-1 px-2 bg-primary rounded m-1">
