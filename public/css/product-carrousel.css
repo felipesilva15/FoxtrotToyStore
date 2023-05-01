@@ -2,13 +2,22 @@
     height: 490px
 }
 
-#product-carrousel .carousel-control-prev, #product-carrousel .carousel-control-next {
+#product-carrousel .carousel-control-prev, #product-carrousel .carousel-control-next, #product-images .carousel-control-prev, #product-images .carousel-control-next {
     background-color: #e1e1e1;
     width: 2.75rem;
     height: 2.75rem;
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
+}
+
+#product-images .carousel-control-prev, #product-images .carousel-control-next{
+    width: 2rem;
+    height: 2rem;
+}
+
+#product-images .carousel-item{
+    height: min-content;
 }
 
 @media (min-width: 768px) {

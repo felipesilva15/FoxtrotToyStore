@@ -2,8 +2,8 @@ let multipleCardCarousel = document.querySelector("#product-carrousel");
 
 if (window.matchMedia("(min-width: 768px)").matches) {
     let carousel = new bootstrap.Carousel(multipleCardCarousel, { interval: false });
-    let carouselWidth = $(".carousel-inner")[0].scrollWidth;
-    let cardWidth = $(".carousel-item").width();
+    let carouselWidth = $("#product-carrousel .carousel-inner")[0].scrollWidth;
+    let cardWidth = $("#product-carrousel .carousel-item").width();
     let scrollPosition = 0;
 
     $("#product-carrousel .carousel-control-next").on("click", function () {

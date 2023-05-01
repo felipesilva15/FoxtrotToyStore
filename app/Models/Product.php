@@ -28,6 +28,10 @@ class Product extends Model
         return $this->hasMany('App\Models\OrderItem', 'PRODUTO_ID', 'PRODUTO_ID');
     }
 
+    public function OrderedProductImages(){
+        return $this->ProductImages->sortBy('IMAGEM_ORDEM')->values()->all();
+    }
+
     public static function PerPageOptions(){
         return [24, 32, 48];
     }

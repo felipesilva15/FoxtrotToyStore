@@ -102,6 +102,17 @@ class ProductController extends Controller
         return view('products.product', $data);
     }
 
+    public function show(Product $product){
+        $breadcrumbRoutes = [
+            ['name' => 'Home', 'url' => route('home')],
+            ['name' => 'Produtos', 'url' => route('product')],
+            ['name' => $product->Category->CATEGORIA_NOME, 'url' => route('product', ['categories[]' => $product->CATEGORIA_ID])],
+            ['name' => ucwords($product->PRODUTO_NOME), 'url' => route('product.show', ['product' => $product->PRODUTO_ID])]
+        ];
+
+        return view('products.show', ['product' => $product, 'breadcrumbRoutes' => $breadcrumbRoutes]);
+    }
+
     public function indexApi(){
         $products = Product::select('PRODUTO_NOME')->get();
         $data = [];

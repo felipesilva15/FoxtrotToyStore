@@ -1,4 +1,4 @@
-<a href="{{ url('product/'.$product->PRODUTO_ID) }}" class="text-decoration-none text-reset">
+<a href="{{ route('product.show', ['product' => $product->PRODUTO_ID]) }}" class="text-decoration-none text-reset">
     <div class="d-flex flex-column bg-white rounded p-2 shadow m-2 align-self-stretch product-card">
         @if ($product->PRODUTO_DESCONTO != 0 && isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
             <div class="position-absolute">
@@ -8,7 +8,7 @@
             </div>
         @endif
         <div>
-            <img class="w-100 image-fit" src="{{ isset($product->ProductImages[0]->IMAGEM_URL) ? $product->ProductImages[0]->IMAGEM_URL : asset('images/produto-sem-foto.jpg') }}" alt="Imagem do produto">
+            <img class="w-100 image-fit" src="{{ isset($product->OrderedProductImages()[0]->IMAGEM_URL) ? $product->OrderedProductImages()[0]->IMAGEM_URL : asset('images/produto-sem-foto.jpg') }}" alt="Imagem do produto">
         </div>
         <div class="d-flex flex-column justify-content-start text-start mb-3 mt-2">
             <span class="fw-bold fs-5 text-nowrap overflow-hidden" data-bs-toggle="tooltip" data-bs-title="Default tooltip">{{ $product->PRODUTO_NOME ?? '' }}</span>
