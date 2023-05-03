@@ -5,15 +5,16 @@
 @section('content')
     <section class="my-5">
         <div class="container">
+            <div class="w-min mb-3">
+                @include('components.breadcrumb', $breadcrumbRoutes)
+            </div>
             <div class="d-flex">
                 <div class="w-50">
                     @include('components.product-images', ['productImages' => $product->OrderedProductImages()])
                 </div>
                 <div class="w-50 ms-4">
-                    <div class="w-min">
-                        @include('components.breadcrumb', $breadcrumbRoutes)
-                    </div>
-                    <h2 class="my-2">{{ $product->PRODUTO_NOME }}</h2>
+                    <h2 class="mb-1">{{ $product->PRODUTO_NOME }}</h2>
+                    <p class="text-secondary fs-5">{{ $product->Category->CATEGORIA_NOME }}</p>
                     <p class="text-secondary">{{ $product->Category->CATEGORIA_DESC }}</p>
                     <div class="mt-5">
                         @if (isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
