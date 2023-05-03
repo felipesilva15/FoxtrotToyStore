@@ -5,7 +5,7 @@
 <div class="d-flex flex-column">
     <div class="d-flex p-2 border rounded" style="height: 320px">
         <img class="w-100 image-fit" id="product-image-active"
-            src="{{ isset($productImages[0]->IMAGEM_URL) ? $productImages[0]->IMAGEM_URL : asset('images/produto-sem-foto.jpg') }}"
+            src="{{ isset($productImages[0]->IMAGEM_URL) ? $productImages[0]->IMAGEM_URL : $product->DefaultProductImage() }}"
             alt="Imagem do produto">
     </div>
     <div>
@@ -24,7 +24,7 @@
                     <div class="carousel-item hand-cursor">
                         <div class="px-1">
                             <div class="p-1 border rounded">
-                                <img class="w-100 image-fit" src="{{ asset('images/produto-sem-foto.jpg') }}"
+                                <img class="w-100 image-fit" src="{{ $product->DefaultProductImage() }}"
                                     alt="Imagem do produto">
                             </div>
                         </div>

@@ -22,7 +22,7 @@
                         <div class="w-100 d-flex">
                             <div style="width: 140px">
                                 <img class="w-100 image-fit"
-                                    src="{{ isset($item->produto->ProductImages[0]->IMAGEM_URL) ? $item->produto->ProductImages[0]->IMAGEM_URL : asset('images/produto-sem-foto.jpg') }}"
+                                    src="{{ isset($item->produto->OrderedProductImages()[0]->IMAGEM_URL) ? $item->produto->OrderedProductImages()[0]->IMAGEM_URL : $item->produto->DefaultProductImage() }}"
                                     class="card-img-top" alt="">
                             </div>
                             <div class="d-flex flex-column flex-fill px-3">

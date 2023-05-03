@@ -15,7 +15,7 @@
                 <div class="w-50 ms-4">
                     <h2 class="mb-1">{{ $product->PRODUTO_NOME }}</h2>
                     <p class="text-secondary fs-5">{{ $product->Category->CATEGORIA_NOME }}</p>
-                    <p class="text-secondary">{{ $product->Category->CATEGORIA_DESC }}</p>
+                    <p class="text-secondary overflow-hidden" style="min-height: 85px; max-height: 85px">{{ $product->Category->CATEGORIA_DESC }}</p>
                     <div class="mt-5">
                         @if (isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
                             <span class="fs-5 fw-bold me-1 text-primary">R$

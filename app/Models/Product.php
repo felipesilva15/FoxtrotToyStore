@@ -32,6 +32,10 @@ class Product extends Model
         return $this->ProductImages->sortBy('IMAGEM_ORDEM')->values()->all();
     }
 
+    public function DefaultProductImage(){
+        return asset('images/produto-sem-foto.jpg');
+    }
+
     public static function PerPageOptions(){
         return [24, 32, 48];
     }

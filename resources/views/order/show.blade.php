@@ -33,7 +33,7 @@
                                 <td class="d-flex">
                                     <div style="width: 140px">
                                         <img class="w-100 image-fit"
-                                            src="{{ isset($item->product->ProductImages[0]->IMAGEM_URL) ? $item->product->ProductImages[0]->IMAGEM_URL : asset('images/produto-sem-foto.jpg') }}"
+                                            src="{{ isset($item->product->OrderedProductImages()[0]->IMAGEM_URL) ? $item->product->OrderedProductImages()[0]->IMAGEM_URL : $item->product->DefaultProductImage() }}"
                                             class="card-img-top" alt="">
                                     </div>
                                     <div class="d-flex flex-column flex-fill px-3">

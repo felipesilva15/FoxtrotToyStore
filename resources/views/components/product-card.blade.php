@@ -8,7 +8,7 @@
             </div>
         @endif
         <div>
-            <img class="w-100 image-fit" src="{{ isset($product->OrderedProductImages()[0]->IMAGEM_URL) ? $product->OrderedProductImages()[0]->IMAGEM_URL : asset('images/produto-sem-foto.jpg') }}" alt="Imagem do produto">
+            <img class="w-100 image-fit" src="{{ isset($product->OrderedProductImages()[0]->IMAGEM_URL) ? $product->OrderedProductImages()[0]->IMAGEM_URL : $product->DefaultProductImage() }}" alt="Imagem do produto">
         </div>
         <div class="d-flex flex-column justify-content-start text-start mb-3 mt-2">
             <span class="fw-bold fs-5 text-nowrap overflow-hidden" data-bs-toggle="tooltip" data-bs-title="Default tooltip">{{ $product->PRODUTO_NOME ?? '' }}</span>

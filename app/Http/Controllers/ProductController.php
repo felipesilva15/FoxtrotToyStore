@@ -87,9 +87,20 @@ class ProductController extends Controller
         }
 
         if(request('categories')){
-            $products = Product::where($conditions)->whereIn('CATEGORIA_ID', request('categories'))->withSum('OrderItems', 'item_qtd')->orderByRaw($sortOption)->paginate($per_page);
+            $products = Product::where($conditions)
+                                ->whereIn('CATEGORIA_ID', request('categories'))
+                                ->withSum('OrderItems', 'item_qtd')
+                                ->withSum('ProductStock', 'produto_qtd')
+                                ->orderByRaw('case when `product_stock_sum_produto_qtd` > 0 then 1 else 0 end DESC')
+                                ->orderByRaw($sortOption)
+                                ->paginate($per_page);
         } else{
-            $products = Product::where($conditions)->withSum('OrderItems', 'item_qtd')->orderByRaw($sortOption)->paginate($per_page);
+            $products = Product::where($conditions)
+                                ->withSum('OrderItems', 'item_qtd')
+                                ->withSum('ProductStock', 'produto_qtd')
+                                ->orderByRaw('case when `product_stock_sum_produto_qtd` > 0 then 1 else 0 end DESC')
+                                ->orderByRaw($sortOption)
+                                ->paginate($per_page);
         }
 
         // Define data to send for view
