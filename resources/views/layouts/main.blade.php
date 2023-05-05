@@ -48,6 +48,9 @@
                 @include('layouts.inc.userDropdown')
             </div>
         </div>
+        <nav class="w-100 d-flex">
+
+        </nav>
     </header>
     <main>
         @yield('content')

@@ -39,10 +39,10 @@
                         </button>
                     </form>
                 @else
-                <button type="submit" class="btn btn-secondary d-flex w-100 justify-content-center disabled">
-                    <span class="material-icons md-24 me-1 hand-cursor">cancel</span>
-                    <span class="fw-bold">Indisponível</span>
-                </button>
+                    <button type="submit" class="btn btn-secondary d-flex w-100 justify-content-center disabled">
+                        <span class="material-icons md-24 me-1 hand-cursor">cancel</span>
+                        <span class="fw-bold">Indisponível</span>
+                    </button>
                 @endif
             </div>
         </div>

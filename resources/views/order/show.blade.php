@@ -31,13 +31,13 @@
                         @foreach ($order->OrderItems as $item)
                             <tr>
                                 <td class="d-flex">
-                                    <div style="width: 140px">
+                                    <a href="{{ route('product.show', ['product' => $item->product->PRODUTO_ID]) }}" style="width: 140px">
                                         <img class="w-100 image-fit"
                                             src="{{ isset($item->product->OrderedProductImages()[0]->IMAGEM_URL) ? $item->product->OrderedProductImages()[0]->IMAGEM_URL : $item->product->DefaultProductImage() }}"
                                             class="card-img-top" alt="">
-                                    </div>
+                                    </a>
                                     <div class="d-flex flex-column flex-fill px-3">
-                                        <span class="fw-bold fs-5">{{ $item->product->PRODUTO_NOME }}</span>
+                                        <a href="{{ route('product.show', ['product' => $item->product->PRODUTO_ID]) }}" class="text-reset text-decoration-none fw-bold fs-5">{{ $item->product->PRODUTO_NOME }}</a>
                                         <span
                                             class="text-secondary-emphasis">{{ $item->product->category->CATEGORIA_NOME }}</span>
                                         <span class="text-secondary-emphasis">Quantidade: {{ $item->ITEM_QTD }}</span>

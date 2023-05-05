@@ -10,14 +10,17 @@
             </div>
             <div class="d-flex">
                 <div class="w-50">
-                    @include('components.product-images', ['productImages' => $product->OrderedProductImages()])
+                    @include('components.product-images', [
+                        'productImages' => $product->OrderedProductImages(),
+                    ])
                 </div>
                 <div class="w-50 ms-4">
                     <h2 class="mb-1">{{ $product->PRODUTO_NOME }}</h2>
                     <p class="text-secondary fs-5">{{ $product->Category->CATEGORIA_NOME }}</p>
-                    <p class="text-secondary overflow-hidden" style="min-height: 85px; max-height: 85px">{{ $product->Category->CATEGORIA_DESC }}</p>
+                    <p class="text-secondary overflow-hidden" style="min-height: 90px; max-height: 85px">
+                        {{ $product->Category->CATEGORIA_DESC }}</p>
                     <div class="mt-5">
-                        @if (isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
+                        @if (isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0 && $product->PRODUTO_ATIVO == 1)
                             <span class="fs-5 fw-bold me-1 text-primary">R$
                                 {{ number_format($product->PRODUTO_PRECO - $product->PRODUTO_DESCONTO, 2, ',', '') }}</span>
                             @if ($product->PRODUTO_DESCONTO != 0)
@@ -29,36 +32,43 @@
                         @endif
                     </div>
                     <div>
-                        @if (isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
+                        @if (isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0 && $product->PRODUTO_ATIVO == 1)
                             <span class="text-secondary">{{ $product->ProductStock->PRODUTO_QTD }} em estoque</span>
                         @else
-                            <span class="text-secondary">Produto indisponível</span>
+                            <span class="opacity-0">A</span>
                         @endif
                     </div>
-                    <div class="d-flex justify-centent-between align-items-center mt-2">
-                        <div class="me-3">
-                            <form class="d-flex justify-content-center align-items-center form-qty" method="post"
-                                action="{{ route('cart.store', ['product' => $product->PRODUTO_ID]) }}">
-                                @csrf
-                                <button type="submit"
-                                    class="btn btn-link text-reset text-decoration-none p-0 material-icons hand-cursor custom-hover-link remove-qty-item disabled">chevron_left</button>
-                                <span class="fw-bold mx-2">1</span>
-                                <button type="submit"
-                                    class="btn btn-link text-reset text-decoration-none p-0 material-icons hand-cursor custom-hover-link add-qty-item">chevron_right</button>
-                                <input type="hidden" name="qtyItem" value="1">
-                            </form>
+                    @if(isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0 &&  $product->PRODUTO_ATIVO == 1)
+                        <div class="d-flex justify-centent-between align-items-center mt-2">
+                            <div class="me-3">
+                                <form class="d-flex justify-content-center align-items-center form-qty" method="post"
+                                    action="{{ route('cart.store', ['product' => $product->PRODUTO_ID]) }}">
+                                    @csrf
+                                    <button type="submit"
+                                        class="btn btn-link text-reset text-decoration-none p-0 material-icons hand-cursor custom-hover-link remove-qty-item disabled">chevron_left</button>
+                                    <span class="fw-bold mx-2">1</span>
+                                    <button type="submit"
+                                        class="btn btn-link text-reset text-decoration-none p-0 material-icons hand-cursor custom-hover-link add-qty-item">chevron_right</button>
+                                    <input type="hidden" name="qtyItem" value="1">
+                                </form>
+                            </div>
+                            <div>
+                                <form action="{{ route('cart.store', ['product' => $product->PRODUTO_ID]) }}" method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit" class="btn btn-primary d-flex justify-content-center">
+                                        <span class="material-icons md-24 me-1 hand-cursor">shopping_cart</span>
+                                        <span class="fw-bold">Comprar</span>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                        <div>
-                            <form action="{{ route('cart.store', ['product' => $product->PRODUTO_ID]) }}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <button type="submit" class="btn btn-primary d-flex justify-content-center">
-                                    <span class="material-icons md-24 me-1 hand-cursor">shopping_cart</span>
-                                    <span class="fw-bold">Comprar</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                    @else
+                        <button class="btn btn-secondary d-flex w-100 justify-content-center disabled">
+                            <span class="material-icons md-24 me-1 hand-cursor">cancel</span>
+                            <span class="fw-bold">Produto indisponível</span>
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -75,8 +85,15 @@
         <div class="container">
             <h2 class="mb-2">Produtos semelhantes</h2>
             @include('components.product-carrousel', [
-                'products' => $product->Category->AvaiableProducts(12),
+                'products' => $product->Category->AvaiableProducts(8),
             ])
+            <div class="d-flex align-items-end flex-column w-100">
+                <a href="{{ route('product', ['categories[]' => $product->Category->CATEGORIA_ID]) }}"
+                    class="d-flex align-items-center justify-content-center text-primary text-decoration-none">
+                    <div class="fw-bold fs-5 me-1">Ver mais</div>
+                    <div class="material-icons mt-1 hand-cursor">double_arrow</div>
+                </a>
+            </div>
         </div>
     </section>
 @endsection

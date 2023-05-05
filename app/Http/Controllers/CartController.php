@@ -48,7 +48,7 @@ class CartController extends Controller
             return back()->with('error', 'Produto indisponível');
         }
 
-        if(!isset($product->ProductStock->PRODUTO_QTD) || $product->ProductStock->PRODUTO_QTD < $qtyItem){
+        if(!isset($product->ProductStock->PRODUTO_QTD) || $qtyItem > $product->ProductStock->PRODUTO_QTD){
             return back()->with('error', 'Quantidade em estoque indisponível');
         }
 

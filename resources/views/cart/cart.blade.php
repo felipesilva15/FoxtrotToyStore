@@ -20,13 +20,13 @@
                     </div>
                     @foreach ($cartItems as $item)
                         <div class="w-100 d-flex">
-                            <div style="width: 140px">
+                            <a href="{{ route('product.show', ['product' => $item->produto->PRODUTO_ID]) }}" style="width: 140px">
                                 <img class="w-100 image-fit"
                                     src="{{ isset($item->produto->OrderedProductImages()[0]->IMAGEM_URL) ? $item->produto->OrderedProductImages()[0]->IMAGEM_URL : $item->produto->DefaultProductImage() }}"
                                     class="card-img-top" alt="">
-                            </div>
+                            </a>
                             <div class="d-flex flex-column flex-fill px-3">
-                                <span class="fw-bold fs-5">{{ $item->produto->PRODUTO_NOME }}</span>
+                                <a href="{{ route('product.show', ['product' => $item->produto->PRODUTO_ID]) }}" class="text-reset text-decoration-none fw-bold fs-5">{{ $item->produto->PRODUTO_NOME }}</a>
                                 <span class="text-secondary-emphasis">{{ $item->produto->category->CATEGORIA_NOME }}</span>
                                 <div>
                                     <span class="fw-bold text-primary">R$
