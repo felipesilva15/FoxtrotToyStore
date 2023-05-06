@@ -2,10 +2,6 @@
 
 @section('title', 'Carrinho de compras')
 
-@push('styles')
-    <link rel="stylesheet" href="/css/cart.css">
-@endpush
-
 @section('content')
     <section class="my-5">
         <div class="m-auto text-center mb-5">

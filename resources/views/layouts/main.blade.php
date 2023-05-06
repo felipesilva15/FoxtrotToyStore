@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
     <title>@yield('title')</title>
 
     {{-- Boostrap CSS --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     {{-- Bootstrap icons --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -32,6 +34,7 @@
     {{-- CSS views --}}
     @stack('styles')
 </head>
+
 <body>
     <header class="bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center px-5 py-2">
@@ -48,8 +51,45 @@
                 @include('layouts.inc.userDropdown')
             </div>
         </div>
-        <nav class="w-100 d-flex">
-
+        <nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse container fw-bold" id="navbarText">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 mx-5 fs-6">
+                        <div class="vr my-1"></div>
+                        <li class="nav-item py-1">
+                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <div class="vr my-1"></div>
+                        <li class="nav-item py-1">
+                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'product' ? 'active' : '' }}" href="{{ route('product') }}">Shop</a>
+                        </li>
+                        <div class="vr my-1"></div>
+                        <li class="nav-item dropdown">
+                            <li class="nav-item dropdown d-flex align-items-center">
+                                <a class="nav-link py-0 px-3 dropdown-toggle" href="{{ route('product') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
+                                <ul class="dropdown-menu">
+                                    @foreach (App\Models\Category::AvaiableCategories() as $category)
+                                        <li><a class="dropdown-item" href="{{ route('product', ['categories[]' => $category->CATEGORIA_ID]) }}">{{ $category->CATEGORIA_NOME }}</a></li>
+                                    @endforeach
+                                </ul>
+                              </li>
+                        </li>
+                        <div class="vr my-1"></div>
+                        <li class="nav-item py-1">
+                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'cart' ? 'active' : '' }}" href="{{ route('cart') }}">Carrinho</a>
+                        </li>
+                        <div class="vr my-1"></div>
+                        <li class="nav-item py-1">
+                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" href="#">Meu perfil</a>
+                        </li>
+                        <div class="vr my-1"></div>
+                        <li class="nav-item py-1">
+                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'order' ? 'active' : '' }}" href="{{ route('order') }}">Meus pedidos</a>
+                        </li>
+                        <div class="vr my-1"></div>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
     <main>
@@ -77,7 +117,8 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <i class="bi bi-whatsapp pe-1 fs-5"></i>
-                        <a class="text-reset" href="https://api.whatsapp.com/send?phone=5511954452800">(11) 95445-2800</a>
+                        <a class="text-reset" href="https://api.whatsapp.com/send?phone=5511954452800">(11)
+                            95445-2800</a>
                     </div>
                 </div>
                 <div class="d-flex flex-column mx-1">
@@ -137,4 +178,5 @@
     {{-- JS views --}}
     @stack('scripts')
 </body>
+
 </html>

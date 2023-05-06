@@ -125,7 +125,7 @@ class ProductController extends Controller
     }
 
     public function indexApi(){
-        $products = Product::select('PRODUTO_NOME')->get();
+        $products = Product::select('PRODUTO_NOME')->where('PRODUTO_ATIVO', 1)->get();
         $data = [];
 
         foreach ($products as $product) {
