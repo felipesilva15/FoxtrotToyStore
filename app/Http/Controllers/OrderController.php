@@ -26,8 +26,24 @@ class OrderController extends Controller
     public function store(){
         $user = Auth::user();
 
-        if(!Auth::user()->CartItems->sum('ITEM_QTD')){
+        // Valida se existem itens no carrinho
+        if(!$user->CartItems->sum('ITEM_QTD')){
             return back()->with('error', 'Insira ao menos um item no carrinho para finalizar o pedido!');
+        }
+
+        // Valida os itens do pedido
+        foreach ($user->CartItems as $item) {
+            if($item->ITEM_QTD <= 0){
+                continue;
+            }
+
+            if($item->produto->PRODUTO_ATIVO == 0){
+                return back()->with('error', "O produto {$item->produto->PRODUTO_NOME} está indisponível");
+            }
+    
+            if(!isset($item->produto->ProductStock->PRODUTO_QTD) || $item->ITEM_QTD > $item->produto->ProductStock->PRODUTO_QTD){
+                return back()->with('error', "O produto {$item->produto->PRODUTO_NOME} não possui em estoque");
+            }
         }
 
         // Cria o pedido
