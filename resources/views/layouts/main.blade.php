@@ -20,6 +20,9 @@
     {{-- JQuery CSS --}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
+    {{-- Paleta de cores --}}
+    <link rel="stylesheet" href="{{ asset('css/color-palette.css') }}">
+
     {{-- CSS principal --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
@@ -51,42 +54,35 @@
                 @include('layouts.inc.userDropdown')
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
+        <nav class="navbar navbar-expand-lg py-0">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse container fw-bold" id="navbarText">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 mx-5 fs-6">
-                        <div class="vr my-1"></div>
-                        <li class="nav-item py-1">
-                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                    <ul class="navbar-nav mx-auto mb-2 mx-5 fs-6">
+                        <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-orange custom-interaction-orange">
+                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                         </li>
-                        <div class="vr my-1"></div>
-                        <li class="nav-item py-1">
-                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'product' ? 'active' : '' }}" href="{{ route('product') }}">Shop</a>
+                        <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-yellow  custom-interaction-yellow">
+                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'product' ? 'active' : '' }}" href="{{ route('product') }}">Shop</a>
                         </li>
-                        <div class="vr my-1"></div>
                         <li class="nav-item dropdown">
-                            <li class="nav-item dropdown d-flex align-items-center">
-                                <a class="nav-link py-0 px-3 dropdown-toggle" href="{{ route('product') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
+                            <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-green custom-interaction-green dropdown d-flex align-items-center">
+                                <a class="nav-link text-reset py-0 dropdown-toggle" href="{{ route('product') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
                                 <ul class="dropdown-menu">
                                     @foreach (App\Models\Category::AvaiableCategories() as $category)
                                         <li><a class="dropdown-item" href="{{ route('product', ['categories[]' => $category->CATEGORIA_ID]) }}">{{ $category->CATEGORIA_NOME }}</a></li>
-                                    @endforeach
+                                    @endforeach 
                                 </ul>
                               </li>
                         </li>
-                        <div class="vr my-1"></div>
-                        <li class="nav-item py-1">
-                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'cart' ? 'active' : '' }}" href="{{ route('cart') }}">Carrinho</a>
+                        <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-indigo custom-interaction-indigo">
+                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'cart' ? 'active' : '' }}" href="{{ route('cart') }}">Carrinho</a>
                         </li>
-                        <div class="vr my-1"></div>
-                        <li class="nav-item py-1">
-                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" href="#">Meu perfil</a>
+                        <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-cyan custom-interaction-cyan">
+                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" href="#">Meu perfil</a>
                         </li>
-                        <div class="vr my-1"></div>
-                        <li class="nav-item py-1">
-                            <a class="nav-link py-0 px-3 {{ Route::currentRouteName() == 'order' ? 'active' : '' }}" href="{{ route('order') }}">Meus pedidos</a>
+                        <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-red custom-interaction-red">
+                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'order' ? 'active' : '' }}" href="{{ route('order') }}">Meus pedidos</a>
                         </li>
-                        <div class="vr my-1"></div>
                     </ul>
                 </div>
             </div>

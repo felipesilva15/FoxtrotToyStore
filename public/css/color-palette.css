@@ -1,0 +1,106 @@
+:root{
+    --custom-orange: #FF5E3D;
+    --custom-orange-dark: #c04830;
+    --custom-orange-softdark: ##eb5639;
+    --custom-yellow: #F0DC1B;
+    --custom-yellow-dark: #d4c218;
+    --custom-yellow-softdark: ##e2ce19;
+    --custom-green: #17AE27;
+    --custom-green-dark: #149220;
+    --custom-green-softdark: ##169e23;
+    --custom-indigo: #7632D5;
+    --custom-indigo-dark: #6129af;
+    --custom-indigo-softdark: ##6f2fc9;
+    --custom-cyan: #0BCBB0;
+    --custom-cyan-dark: #0bb39c;
+    --custom-cyan-softdark: ##0bbea7;
+    --custom-blue: #2487EE;
+    --custom-blue-dark: #2072ca;
+    --custom-blue-softdark: ##217ada;
+    --custom-gray: #535562;
+    --custom-gray-dark: #3e3f47;
+    --custom-gray-softdark: ##4a4c57;
+    --custom-red: #FF5052;
+    --custom-red-dark: #b4393b;
+    --custom-red-softdark: #e04648;
+}
+
+.bg-custom-orange{
+    background-color: var(--custom-orange);
+    border-color: var(--custom-orange-softdark);
+}
+
+.custom-interaction-orange:active, .custom-interaction-orange:focus, .custom-interaction-orange:hover{
+    background-color: var(--custom-orange-dark) !important;
+    border-color: var(--custom-orange-softdark) !important;
+}
+
+.bg-custom-yellow{
+    background-color: var(--custom-yellow);
+    border-color: var(--custom-yellow-softdark);
+}
+
+.custom-interaction-yellow:active, .custom-interaction-yellow:focus, .custom-interaction-yellow:hover{
+    background-color: var(--custom-yellow-dark) !important;
+    border-color: var(--custom-yellow-softdark) !important;
+}
+
+.bg-custom-blue{
+    background-color: var(--custom-blue);
+    border-color: var(--custom-blue-softdark);
+}
+
+.custom-interaction-blue:active, .custom-interaction-blue:focus, .custom-interaction-blue:hover{
+    background-color: var(--custom-blue-dark) !important;
+    border-color: var(--custom-blue-softdark)  !important;
+}
+
+.bg-custom-red{
+    background-color: var(--custom-red);
+    border-color: var(--custom-red-softdark);
+}
+
+.custom-interaction-red:active, .custom-interaction-red:focus, .custom-interaction-red:hover{
+    background-color: var(--custom-red-dark) !important;
+    border-color: var(--custom-red-softdark) !important;
+}
+
+.bg-custom-green{
+    background-color: var(--custom-green);
+    border-color: var(--custom-green-softdark);
+}
+
+.custom-interaction-green:active, .custom-interaction-green:focus, .custom-interaction-green:hover{
+    background-color: var(--custom-green-dark) !important;
+    border-color: var(--custom-green-softdark) !important;
+}
+
+.bg-custom-indigo{
+    background-color: var(--custom-indigo);
+    border-color: var(--custom-indigo-softdark);
+}
+
+.custom-interaction-indigo:active, .custom-interaction-indigo:focus, .custom-interaction-indigo:hover{
+    background-color: var(--custom-indigo-dark) !important;
+    border-color: var(--custom-indigo-softdark) !important;
+}
+
+.bg-custom-gray{
+    background-color: var(--custom-gray);
+    border-color: var(--custom-gray-softdark);
+}
+
+.custom-interaction-gray:active, .custom-interaction-gray:focus, .custom-interaction-gray:hover{
+    background-color: var(--custom-gray-dark) !important;
+    border-color: var(--custom-gray-softdark) !important;
+}
+
+.bg-custom-cyan{
+    background-color: var(--custom-cyan);
+    border-color: var(--custom-cyan-softdark);
+}
+
+.custom-interaction-cyan:active, .custom-interaction-cyan:focus, .custom-interaction-cyan:hover{
+    background-color: var(--custom-cyan-dark) !important;
+    border-color: var(--custom-cyan-softdark) !important;
+}

@@ -1,3 +1,5 @@
+
+
 .logo{
     max-width: 120px;
     border-radius: 8px;
@@ -104,8 +106,8 @@ input[type="range"]::-webkit-slider-thumb{
     width: min-content;
 }
 
-.nav-item:hover{
-    background-color: rgba(0, 0, 0, .1);
+.nav-item .active{
+    text-decoration: underline ;
 }
 
 .nav-item{
