@@ -24,7 +24,7 @@
 @endif
 
 {{-- Custom toast validation errors --}}
-@if(count($errors->all()))
+@if(count($errors->all()) && Route::currentRouteName() !== 'profile.edit')
     <script>
         @foreach ($errors->all() as $error)
             toast.error("{{ $error }}");

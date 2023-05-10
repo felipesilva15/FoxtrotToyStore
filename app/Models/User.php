@@ -33,5 +33,10 @@ class User extends Authenticatable
 
     public function CartItems(){
         return $this->hasMany('App\Models\CartItem', 'USUARIO_ID', 'USUARIO_ID');
+
+    }
+
+    public function Address(){
+        return $this->hasOne('App\Models\Address', 'USUARIO_ID', 'USUARIO_ID');
     }
 }

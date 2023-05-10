@@ -1,4 +1,6 @@
 
+
+
 /* 1ª SESSÃO DA HOME */
 #primeira-secao{
     display: flex;
@@ -21,15 +23,27 @@
 
 
 section h2{
-    font-family: 'Comic Neue', cursive;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 40px;
+    text-shadow: 1px 1px 1px #000;
 }
 
 /* 2ª SESSÃO DA HOME */
-#segunda-secao{
-    background-color: #bddbe625;
-}
+#segunda-secao {
+    /* position: relative; */
+    /* torna o elemento pai posicionado para que o elemento pseudo possa ser posicionado em relação a ele */
+    /* background-image: url('../images/3898.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover; */
+    /* background-color: rgba(0, 0, 0, 0.1) !important; */
+    /* aplica a cor de fundo com opacidade na seção */
+  }
+
 
 /* 3ª SESSÃO DA HOME */
 #terceira-secao{
     background-color: #ECECEC;
 }
+
