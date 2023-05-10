@@ -29,7 +29,30 @@ class Product extends Model
     }
 
     public function OrderedProductImages(){
-        return $this->ProductImages->sortBy('IMAGEM_ORDEM')->values()->all();
+        return $this->ProductImages->filter(function ($image) {
+                                        return stristr($image->IMAGEM_URL, 'http');
+                                    })
+                                   ->sortBy('IMAGEM_ORDEM')->values()->all();
+    }
+
+    public function FormattedDiscountPrice(): string{
+        if(isset($this->ProductStock->PRODUTO_QTD) && $this->ProductStock->PRODUTO_QTD != 0 && $this->PRODUTO_ATIVO = 1){
+            return 'R$ ' . number_format($this->PRODUTO_PRECO - $this->PRODUTO_DESCONTO, 2, ',', '');
+        }
+
+        return 'R$ --,--';
+    }
+
+    public function FormattedPrice(): string{
+        if(isset($this->ProductStock->PRODUTO_QTD) && $this->ProductStock->PRODUTO_QTD != 0 && $this->PRODUTO_ATIVO = 1){
+            return 'R$ ' . number_format($this->PRODUTO_PRECO, 2, ',', '');
+        }
+
+        return 'R$ --,--';
+    }
+
+    public function DiscountPercentage(){
+        return round($this->PRODUTO_DESCONTO / ($this->PRODUTO_PRECO / 100), 0);
     }
 
     public function DefaultProductImage(){

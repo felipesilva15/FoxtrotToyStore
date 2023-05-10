@@ -62,7 +62,7 @@
                             <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-yellow  custom-interaction-yellow">
-                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'product' ? 'active' : '' }}" href="{{ route('product') }}">Shop</a>
+                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'product' ? 'active' : '' }}" href="{{ route('product') }}">Produtos</a>
                         </li>
                         <li class="nav-item dropdown">
                             <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-green custom-interaction-green dropdown d-flex align-items-center">

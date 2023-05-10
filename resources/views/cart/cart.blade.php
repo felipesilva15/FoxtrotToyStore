@@ -25,11 +25,9 @@
                                 <a href="{{ route('product.show', ['product' => $item->produto->PRODUTO_ID]) }}" class="text-reset text-decoration-none fw-bold fs-5">{{ $item->produto->PRODUTO_NOME }}</a>
                                 <span class="text-secondary-emphasis">{{ $item->produto->category->CATEGORIA_NOME }}</span>
                                 <div>
-                                    <span class="fw-bold text-primary">R$
-                                        {{ number_format($item->produto->PRODUTO_PRECO - $item->produto->PRODUTO_DESCONTO, 2, ',', '') }}</span>
+                                    <span class="fw-bold text-primary">{{ $product->FormattedDiscountPrice() }}</span>
                                     @if ($item->produto->PRODUTO_DESCONTO != 0)
-                                        <span class="text-secondary fs-7"><s>R$
-                                                {{ number_format($item->produto->PRODUTO_PRECO ?? 0, 2, ',', '') }}</s></span>
+                                        <span class="text-secondary fs-7"><s>{{ $product->FormattedPrice() }}</s></span>
                                     @endif
                                 </div>
                             </div>

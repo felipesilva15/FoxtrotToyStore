@@ -3,7 +3,7 @@
         @if ($product->PRODUTO_DESCONTO != 0 && isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
             <div class="position-absolute">
                 <div class="py-1 px-2 bg-primary rounded m-1">
-                    <span class="text-light fs-7 fw-bold">-{{ round($product->PRODUTO_DESCONTO / ($product->PRODUTO_PRECO / 100), 0) }}%</span>
+                    <span class="text-light fs-7 fw-bold">-{{ $product->DiscountPercentage() }}%</span>
                 </div>
             </div>
         @endif
@@ -15,12 +15,12 @@
             <span class="text-secondary-emphasis">{{ $product->Category->CATEGORIA_NOME ?? '' }}</span>
             <div class="mt-2">
                 @if(isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
-                    <span class="fs-5 fw-bold me-1 text-primary">R$ {{ number_format($product->PRODUTO_PRECO - $product->PRODUTO_DESCONTO, 2, ',', '')}}</span>
+                    <span class="fs-5 fw-bold me-1 text-primary">{{ $product->FormattedDiscountPrice() }}</span>
                     @if($product->PRODUTO_DESCONTO != 0)
-                        <span class="text-secondary"><s>R$ {{ number_format($product->PRODUTO_PRECO ?? 0, 2, ',', '') }}</s></span>
+                        <span class="text-secondary"><s>{{ $product->FormattedPrice() }}</s></span>
                     @endif
                 @else
-                    <span class="fs-5 fw-bold me-1 text-secondary">R$ --,--</span>
+                    <span class="fs-5 fw-bold me-1 text-secondary">{{ $product->FormattedDiscountPrice() }}</span>
                 @endif
             </div>
         </div>
