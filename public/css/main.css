@@ -106,10 +106,10 @@ input[type="range"]::-webkit-slider-thumb{
     width: min-content;
 }
 
-.nav-item .active{
-    text-decoration: underline ;
+#main-navbar .nav-item .active{
+    text-decoration: underline;
 }
 
-.nav-item{
+#main-navbar .nav-item{
     transition: background-color .25s ease;
 }

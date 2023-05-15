@@ -54,7 +54,7 @@
                 @include('layouts.inc.userDropdown')
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg py-0">
+        <nav class="navbar navbar-expand-lg py-0" id="main-navbar">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse container fw-bold" id="navbarText">
                     <ul class="navbar-nav mx-auto mb-2 mx-5 fs-6">

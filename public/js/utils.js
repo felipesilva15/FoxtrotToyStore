@@ -7,6 +7,15 @@ function loadInputMasks(){
             numericOnly: true
         });
     }
+
+    // CEP
+    if($('.cepMask').length){
+        new Cleave('.cepMask', {
+            delimiters: ['-'],
+            blocks: [5, 3],
+            numericOnly: true
+        });
+    }
 }
 
 function loadTextMasks(){
