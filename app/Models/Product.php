@@ -36,7 +36,7 @@ class Product extends Model
     }
 
     public function FormattedDiscountPrice(): string{
-        if(isset($this->ProductStock->PRODUTO_QTD) && $this->ProductStock->PRODUTO_QTD != 0 && $this->PRODUTO_ATIVO = 1){
+        if(isset($this->ProductStock->PRODUTO_QTD) && $this->ProductStock->PRODUTO_QTD != 0 && $this->PRODUTO_ATIVO == 1){
             return 'R$ ' . number_format($this->PRODUTO_PRECO - $this->PRODUTO_DESCONTO, 2, ',', '');
         }
 
@@ -44,7 +44,7 @@ class Product extends Model
     }
 
     public function FormattedPrice(): string{
-        if(isset($this->ProductStock->PRODUTO_QTD) && $this->ProductStock->PRODUTO_QTD != 0 && $this->PRODUTO_ATIVO = 1){
+        if(isset($this->ProductStock->PRODUTO_QTD) && $this->ProductStock->PRODUTO_QTD != 0 && $this->PRODUTO_ATIVO == 1){
             return 'R$ ' . number_format($this->PRODUTO_PRECO, 2, ',', '');
         }
 
