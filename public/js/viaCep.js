@@ -28,24 +28,21 @@
 function consultaCep(cep) {
     cep = cep.replace('-', ''); // remove o traço do CEP
 
-    // faz uma solicitação AJAX para a API ViaCEP
-    let request = new XMLHttpRequest();
-    request.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/');
-    request.onload = function() {
-        if (request.status === 200) {
-            let endereco = JSON.parse(request.responseText);
+    api.request(`https://viacep.com.br/ws/${cep}/json/`, 'GET', null, true)
+        .then((res) => {
+            if(!res || res.erro){
+                alert('ocorreu um erro');
+                return;
+            }
 
-            // atualiza os campos do formulário com as informações do endereço
-            document.getElementById('logradouro').value = endereco.logradouro;
+            document.getElementById('logradouro').value = res.logradouro;
             document.getElementById('numero').value = '';
-            document.getElementById('cidade').value = endereco.localidade;
-            document.getElementById('estado').value = endereco.uf;
-            // atualize os demais campos do formulário com os dados do endereço retornado
-        } else {
+            document.getElementById('cidade').value = res.localidade;
+            document.getElementById('estado').value = res.uf;
+        })
+        .catch(() => {
             alert('Não foi possível encontrar o endereço para o CEP informado.');
-        }
-    };
-    request.send();
+        })
 }
 
 let ENDERECO_CEP = document.getElementById("cep");
@@ -57,3 +54,4 @@ function validarNumeros() {
     let novoValor = valor.replace(/[^0-9]/g, '');
     input.value = novoValor;
   }
+
