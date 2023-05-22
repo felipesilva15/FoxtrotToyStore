@@ -23,14 +23,12 @@
                                     class="card-img-top" alt="">
                             </a>
                             <div class="d-flex flex-column flex-fill px-3">
-                                <a href="{{ route('product.show', ['product' => $item->produto->PRODUTO_ID]) }}"
-                                    class="text-reset text-decoration-none fw-bold fs-5">{{ $item->produto->PRODUTO_NOME }}</a>
+                                <a href="{{ route('product.show', ['product' => $item->produto->PRODUTO_ID]) }}" class="text-reset text-decoration-none fw-bold fs-5">{{ $item->produto->PRODUTO_NOME }}</a>
                                 <span class="text-secondary-emphasis">{{ $item->produto->category->CATEGORIA_NOME }}</span>
                                 <div>
                                     <span class="fw-bold text-primary">{{ $item->produto->FormattedDiscountPrice() }}</span>
                                     @if ($item->produto->PRODUTO_DESCONTO != 0)
-                                        <span
-                                            class="text-secondary fs-7"><s>{{ $item->produto->FormattedPrice() }}</s></span>
+                                        <span class="text-secondary fs-7"><s>{{ $item->produto->FormattedPrice() }}</s></span>
                                     @endif
                                 </div>
                             </div>
@@ -57,10 +55,16 @@
                             </div>
                             <div class="d-flex flex-column text-end" style="width: 140px">
                                 <span class="fw-bold fs-5">Total</span>
-                                <span class="fs-5 fw-bold text-primary">R$
-                                    {{ number_format(($item->produto->PRODUTO_PRECO - $item->produto->PRODUTO_DESCONTO) * $item->ITEM_QTD, 2, ',', '') }}</span>
+                                <span class="fs-5 fw-bold text-primary">{{ $item->FormattedItemTotal() }}</span>
                             </div>
                         </div>
+                        @foreach ($validator->cartItems as $error)
+                            @if ($error->product_id == $item->PRODUTO_ID)
+                                <div class="mt-3">
+                                    @include('components.error-message', ['icon' => $error->icon, 'description' => $error->description])
+                                </div>
+                            @endif
+                        @endforeach
                         @if ($loop->index < count($cartItems) - 1)
                             <hr>
                         @endif
@@ -107,12 +111,16 @@
                         <span class="col-2">Total do pedido</span>
                         <span class="col-2 text-primary">R$ {{ number_format($totalizer['TOTAL'], 2, ',', '') }}</span>
                     </div>
+                    @if (isset($validator->user->address))
+                        <div class="mt-3">
+                            @include('components.error-message', ['icon' => $validator->user->address->icon, 'description' => $validator->user->address->description])
+                        </div>
+                    @endif
                     <div class="d-flex align-items-stretch mt-3 flex-wrap">
                         <form action="{{ route('order.store') }}" method="post">
                             @csrf
-                            <button type="submit" class="btn btn-primary me-2">Finalizar compra</button>
+                            <button type="submit" class="btn btn-primary me-2 {{ $validator->hasError ? 'disabled btn-secondary' : '' }}">Finalizar compra</button>
                         </form>
-
                         <a href="{{ route('product') }}" class="btn btn-outline-primary">Continuar comprando</a>
                     </div>
                 </div>
