@@ -28,10 +28,34 @@ class CartController extends Controller
             $totalizer['TOTAL'] += ($item->produto->PRODUTO_PRECO - $item->produto->PRODUTO_DESCONTO) * $item->ITEM_QTD;
         }
 
+        $validator =  [
+            'hasError' => false,
+            'cartItems' => [],
+            'user' => []
+        ];
+
+        //if(Auth::user()->AvaiableAddress()) {
+            $validator['user']['address'] = ['icon' => 'home', 'description' => 'Endereço não cadastrado!'];
+        //}
+
+        foreach ($cartItems as $item) {
+            if($item->produto->PRODUTO_ATIVO != 1) {
+                array_push($validator['cartItems'], ['product_id' => $item->PRODUTO_ID, 'icon' => 'production_quantity_limits', 'description' => 'Produto indisponível!']);
+            }
+
+            if(!isset($item->produto->ProductStock->PRODUTO_QTD) || $item->produto->ProductStock->PRODUTO_QTD <= 0 || $item->ITEM_QTD > $item->produto->ProductStock->PRODUTO_QTD) {
+                array_push($validator['cartItems'], ['product_id' => $item->PRODUTO_ID, 'icon' => 'production_quantity_limits', 'description' => 'Quantidade em estoque indisponível!']);
+            }
+        }
+
+        $validator['hasError'] = count($validator['user']) || count($validator['cartItems']) ? true : false;
+        $validator = json_decode(json_encode($validator), false);
+
         // Retornar a view do carrinho de compras com os itens encontrados
         return view('cart.cart', [
             'cartItems' => $cartItems,
-            'totalizer' => $totalizer
+            'totalizer' => $totalizer,
+            'validator' => $validator
         ]);
     }
 
