@@ -31,7 +31,7 @@ function consultaCep(cep) {
     api.request(`https://viacep.com.br/ws/${cep}/json/`, 'GET', null, true)
         .then((res) => {
             if(!res || res.erro){
-                alert('ocorreu um erro');
+                alert('Digite um CEP válido');
                 return;
             }
 
