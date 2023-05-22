@@ -54,98 +54,96 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        <div class="w-100 shadow rounded mt-4 p-4 mb-4"> <!-- DIV do Forms de Endereço do Usuário-->
-            <form method="POST" action="{{ route('profile.address.update') }}" name="addressForm">
-                @csrf
-                {{-- DADOS DA TABELA DE ENDEREÇO DO USUARIO --}}
-                <div class="row">
-                    @if ($address)
-                        <div class="d-flex justify-content-center align-items-center mb-4">
-                            <h3 class="mb-3 card-title fs-4">Atualize seu Endereço</h3>
-                        </div>
-                    @else
-                        <div class="d-flex justify-content-center align-items-center mb-4">
-                            <h3 class="mb-3 card-title fs-4">Cadastre seu Endereço</h3>
-                        </div>
-                    @endif
-                    <div class="col-12 col-md-4 mb-3">
-                        <label class="form-label fw-bold cepMask" for="CEP">CEP <span class="fw-bold text-danger">*</span></label>
-                        <div class="input-group">
-                            <input class="form-control rounded-start" type="text" id="cep" name="ENDERECO_CEP" value="{{ Auth::user()->ENDERECO_CEP }}" placeholder="Digite o seu CEP" maxlength="8" required onblur="consultaCep(this.value)">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        @if ($errors->get('ENDERECO_CEP'))
-                            <div class="text-danger">
-                                {{$errors->get('ENDERECO_CEP')[0]}}
+            <div class="w-100 shadow rounded mt-4 p-4 mb-4"> <!-- DIV do Forms de Endereço do Usuário-->
+                <form method="POST" action="{{ route('profile.address.update') }}" name="addressForm">
+                    @csrf
+                    {{-- DADOS DA TABELA DE ENDEREÇO DO USUARIO --}}
+                    <div class="row">
+                        @if ($address)
+                            <div class="d-flex justify-content-center align-items-center mb-4">
+                                <h3 class="mb-3 card-title fs-4">Atualize seu Endereço</h3>
                             </div>
-                        @endif
-                    </div>
-                    <div class="d-flex flex-column col-8 mb-3">
-                        <label class="form-label fw-bold" for="TipoEndereco">Tipo de Endereço<span class="fw-bold text-danger">*</span></label>
-                        <select class="form-select" id="tipo" name="ENDERECO_NOME" required>
-                            <option value="">Selecione</option>
-                            <option value="Casa" {{ Auth::user()->ENDERECO_NOME == 'Casa' ? 'selected' : '' }}>Casa</option>
-                            <option value="Apartamento" {{ Auth::user()->ENDERECO_NOME == 'Apartamento' ? 'selected' : '' }}>Apartamento</option>
-                            <option value="Trabalho" {{ Auth::user()->ENDERECO_NOME == 'Trabalho' ? 'selected' : '' }}>Trabalho</option>
-                            <option value="Outro" {{ Auth::user()->ENDERECO_NOME == 'Outro' ? 'selected' : '' }}>Outro</option>
-                        </select>
-                        @if ($errors->get('ENDERECO_NOME'))
-                            <div class="text-danger">
-                                {{$errors->get('ENDERECO_NOME')[0]}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-12 mb-3">
-                        <label class="form-label fw-bold text-secondary" for="logradouro">Rua<span class="fw-bold text-danger">*</span></label>
-                        <input class="form-control" type="text" id="logradouro" name="ENDERECO_LOGRADOURO" value="{{ Auth::user()->ENDERECO_LOGRADOURO }}" placeholder="" required disabled>
-                        @if ($errors->get('endereco_logradouro'))
-                            <div class="text-danger">
-                                {{$errors->get('endereco_logradouro')[0]}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="d-flex flex-column col-4 mb-3">
-                        <label class="form-label fw-bold" for="numero">Nº<span class="fw-bold text-danger">*</span></label>
-                        <input class="form-control" type="text" id="numero" name="ENDERECO_NUMERO" placeholder="" required>
-                        @if ($errors->get('endereco_numero'))
-                            <div class="text-danger">
-                                {{$errors->get('endereco_numero')[0]}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="d-flex flex-column col-8 mb-3">
-                        <label class="form-label fw-bold" for="TipoEndereco">Complemento<span class="fw-bold text-danger">*</span></label>
-                        <input class="form-control" type="text" id="tipo" name="ENDERECO_COMPLEMENTO" placeholder="" required>
-                    </div>
-                    <div class="d-flex flex-column col-8 mb-3">
-                        <label class="form-label fw-bold text-secondary" for="Cidade">Cidade<span class="fw-bold text-danger">*</span></label>
-                        <input class="form-control" type="text" id="cidade" name="ENDERECO_CIDADE" placeholder="" required disabled>
-                        @if ($errors->get('endereco_cidade'))
-                            <div class="text-danger">
-                                {{$errors->get('endereco_cidade')[0]}}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="d-flex flex-column col-4 mb-3">
-                        <label class="form-label fw-bold text-secondary" for="Estado">Estado<span class="fw-bold text-danger">*</span></label>
-                        <input class="form-control" type="text" id="estado" name="endereco_estado" placeholder="" required disabled>
-                    </div>
-                    <div>
-                        @if (empty($address) || !$address->active)
-                            <button class="btn btn-primary float-end" type="submit">Cadastrar</button>
                         @else
-                            <button class="btn btn-primary float-end" type="submit">Atualizar</button>
-                            <button class="btn btn-danger float-end me-2" type="submit">Excluir</button>
+                            <div class="d-flex justify-content-center align-items-center mb-4">
+                                <h3 class="mb-3 card-title fs-4">Cadastre seu Endereço</h3>
+                            </div>
                         @endif
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="form-label fw-bold cepMask" for="CEP">CEP <span class="fw-bold text-danger">*</span></label>
+                            <div class="input-group">
+                                <input class="form-control rounded-start" type="text" id="cep" name="ENDERECO_CEP" value="{{ Auth::user()->ENDERECO_CEP }}" placeholder="Digite o seu CEP" maxlength="8" required onblur="consultaCep(this.value)">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            @if ($errors->get('ENDERECO_CEP'))
+                                <div class="text-danger">
+                                    {{$errors->get('ENDERECO_CEP')[0]}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="d-flex flex-column col-8 mb-3">
+                            <label class="form-label fw-bold" for="TipoEndereco">Tipo de Endereço<span class="fw-bold text-danger">*</span></label>
+                            <select class="form-select" id="tipo" name="ENDERECO_NOME" required>
+                                <option value="">Selecione</option>
+                                <option value="Casa" {{ Auth::user()->ENDERECO_NOME == 'Casa' ? 'selected' : '' }}>Casa</option>
+                                <option value="Apartamento" {{ Auth::user()->ENDERECO_NOME == 'Apartamento' ? 'selected' : '' }}>Apartamento</option>
+                                <option value="Trabalho" {{ Auth::user()->ENDERECO_NOME == 'Trabalho' ? 'selected' : '' }}>Trabalho</option>
+                                <option value="Outro" {{ Auth::user()->ENDERECO_NOME == 'Outro' ? 'selected' : '' }}>Outro</option>
+                            </select>
+                            @if ($errors->get('ENDERECO_NOME'))
+                                <div class="text-danger">
+                                    {{$errors->get('ENDERECO_NOME')[0]}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label fw-bold text-secondary" for="logradouro">Rua<span class="fw-bold text-danger">*</span></label>
+                            <input class="form-control" type="text" id="logradouro" name="ENDERECO_LOGRADOURO" value="{{ Auth::user()->ENDERECO_LOGRADOURO }}" placeholder="" required disabled>
+                            @if ($errors->get('endereco_logradouro'))
+                                <div class="text-danger">
+                                    {{$errors->get('endereco_logradouro')[0]}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="d-flex flex-column col-4 mb-3">
+                            <label class="form-label fw-bold" for="numero">Nº<span class="fw-bold text-danger">*</span></label>
+                            <input class="form-control" type="text" id="numero" name="ENDERECO_NUMERO" placeholder="" required>
+                            @if ($errors->get('endereco_numero'))
+                                <div class="text-danger">
+                                    {{$errors->get('endereco_numero')[0]}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="d-flex flex-column col-8 mb-3">
+                            <label class="form-label fw-bold" for="TipoEndereco">Complemento<span class="fw-bold text-danger">*</span></label>
+                            <input class="form-control" type="text" id="tipo" name="ENDERECO_COMPLEMENTO" placeholder="" required>
+                        </div>
+                        <div class="d-flex flex-column col-8 mb-3">
+                            <label class="form-label fw-bold text-secondary" for="Cidade">Cidade<span class="fw-bold text-danger">*</span></label>
+                            <input class="form-control" type="text" id="cidade" name="ENDERECO_CIDADE" placeholder="" required disabled>
+                            @if ($errors->get('endereco_cidade'))
+                                <div class="text-danger">
+                                    {{$errors->get('endereco_cidade')[0]}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="d-flex flex-column col-4 mb-3">
+                            <label class="form-label fw-bold text-secondary" for="Estado">Estado<span class="fw-bold text-danger">*</span></label>
+                            <input class="form-control" type="text" id="estado" name="endereco_estado" placeholder="" required disabled>
+                        </div>
+                        <div>
+                            @if (empty($address) || !$address->active)
+                                <button class="btn btn-primary float-end" type="submit">Cadastrar</button>
+                            @else
+                                <button class="btn btn-primary float-end" type="submit">Atualizar</button>
+                                <button class="btn btn-danger float-end me-2" type="submit">Excluir</button>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 </section>
 @endsection
 
