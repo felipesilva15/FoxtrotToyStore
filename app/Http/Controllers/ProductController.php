@@ -88,6 +88,11 @@ class ProductController extends Controller
 
         if(request('categories')){
             $products = Product::where($conditions)
+                                ->addSelect(['CATEGORIA_NOME' => Category::select('CATEGORIA_NOME')
+                                    ->whereColumn('CATEGORIA.CATEGORIA_ID', 'PRODUTO.CATEGORIA_ID')
+                                    ->orderByDesc('CATEGORIA_NOME')
+                                    ->limit(1)
+                                ])
                                 ->whereIn('CATEGORIA_ID', request('categories'))
                                 ->withSum('OrderItems', 'item_qtd')
                                 ->withSum('ProductStock', 'produto_qtd')
@@ -96,6 +101,11 @@ class ProductController extends Controller
                                 ->paginate($per_page);
         } else{
             $products = Product::where($conditions)
+                                ->addSelect(['CATEGORIA_NOME' => Category::select('CATEGORIA_NOME')
+                                    ->whereColumn('CATEGORIA.CATEGORIA_ID', 'PRODUTO.CATEGORIA_ID')
+                                    ->orderByDesc('CATEGORIA_NOME')
+                                    ->limit(1)
+                                ])
                                 ->withSum('OrderItems', 'item_qtd')
                                 ->withSum('ProductStock', 'produto_qtd')
                                 ->orderByRaw('case when `product_stock_sum_produto_qtd` > 0 then 1 else 0 end DESC')
