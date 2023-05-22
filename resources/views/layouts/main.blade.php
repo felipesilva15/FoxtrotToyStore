@@ -70,7 +70,7 @@
                                 <ul class="dropdown-menu">
                                     @foreach (App\Models\Category::AvaiableCategories() as $category)
                                         <li><a class="dropdown-item" href="{{ route('product', ['categories[]' => $category->CATEGORIA_ID]) }}">{{ $category->CATEGORIA_NOME }}</a></li>
-                                    @endforeach 
+                                    @endforeach
                                 </ul>
                               </li>
                         </li>
@@ -78,7 +78,7 @@
                             <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'cart' ? 'active' : '' }}" href="{{ route('cart') }}">Carrinho</a>
                         </li>
                         <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-cyan custom-interaction-cyan">
-                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" href="#">Meu perfil</a>
+                            <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" href="{{ route('profile.edit') }}">Meu perfil</a>
                         </li>
                         <li class="nav-item btn btn-primary rounded-pill fw-bold mx-2 bg-custom-red custom-interaction-red">
                             <a class="nav-link text-reset py-0 {{ Route::currentRouteName() == 'order' ? 'active' : '' }}" href="{{ route('order') }}">Meus pedidos</a>

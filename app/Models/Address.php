@@ -9,10 +9,37 @@ class Address extends Model
 {
     use HasFactory;
 
-    protected $table = "ENDERECO";
-    protected $primaryKey = "ENDERECO_ID";
+    protected $table = 'ENDERECO';
+    protected $primaryKey = 'ENDERECO_ID';
+    public $timestamps = false;
 
-    public function AddressUser(){
-        return $this->hasOne('App\Models\User', 'USUARIO_ENDERECO', 'USUARIO_ENDERECO');
+    protected $fillable = [
+        'ENDERECO_CEP',
+        'ENDERECO_NOME',
+        'ENDERECO_LOGRADOURO',
+        'ENDERECO_NUMERO',
+        'ENDERECO_COMPLEMENTO',
+        'ENDERECO_CIDADE',
+        'ENDERECO_ESTADO',
+        'ENDERECO_APAGADO',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'USUARIO_ID', 'USUARIO_ID');
+    }
+
+    //Método para montar o endereço completo formatado
+    public function getFormattedAddress()
+    {
+    $formattedAddress = $this->ENDERECO_LOGRADOURO . ', ' . $this->ENDERECO_NUMERO;
+
+    if ($this->ENDERECO_COMPLEMENTO) {
+        $formattedAddress .= ' - ' . $this->ENDERECO_COMPLEMENTO;
+    }
+
+    $formattedAddress .= ', ' . $this->ENDERECO_CIDADE . ', ' . $this->ENDERECO_ESTADO;
+
+    return $formattedAddress;
     }
 }

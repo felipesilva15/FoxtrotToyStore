@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [ProfileController::class, 'updateUser'])->name('profile.update');
+    Route::post('/profile/address', [ProfileController::class, 'updateAddress'])->name('profile.address.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Cart

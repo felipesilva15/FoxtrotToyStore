@@ -22,7 +22,7 @@ function loadTextMasks(){
     // CPF
     if($('.cpfTextMask').length){
         $('.cpfTextMask').each((i, element) => {
-            element.textContent = element.textContent.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');            
+            element.textContent = element.textContent.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
         });
     }
 }

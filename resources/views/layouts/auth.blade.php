@@ -12,6 +12,10 @@
     {{-- Bootstrap icons --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 
+    {{-- Bootstrap font-awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
     {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -20,6 +24,11 @@
 
     {{-- CSS principal --}}
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+
+
+    {{-- CSS Home --}}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
 
     {{-- CSS views --}}
     @stack('styles')

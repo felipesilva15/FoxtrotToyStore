@@ -36,7 +36,14 @@ class User extends Authenticatable
 
     }
 
-    public function Address(){
-        return $this->hasOne('App\Models\Address', 'USUARIO_ID', 'USUARIO_ID');
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'USUARIO_ENDERECO', 'USUARIO_ENDERECO');
+    }
+
+    //Método para retornar um único objeto do endereço ativo do usuário
+    public function activeAddress()
+    {
+    return $this->hasOne(Address::class)->where('active', true);
     }
 }
