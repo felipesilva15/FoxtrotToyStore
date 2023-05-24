@@ -1,0 +1,16 @@
+#qtyItem {
+    border: .5px solid lightgray;
+    width: 2.5rem;
+}
+
+#qtyItem:focus {
+    border: .5px solid lightgray; 
+    outline: none;
+}
+
+#qtyItem::-webkit-inner-spin-button,
+#qtyItem::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}

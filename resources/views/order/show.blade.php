@@ -12,9 +12,13 @@
                 <span class="fw-bold fs-5">Nr. pedido {{ $order->OrderNumber() }}</span>
                 <span>{{ $order->Date() }}</span>
             </div>
-            <div class="mt-2 mb-5">
+            <div class="mt-2">
                 <span class="fw-bold">Status: </span>
                 <span>{{ $order->OrderStatus->STATUS_DESC }}</span>
+            </div>
+            <div class="mt-2 mb-5">
+                <span class="fw-bold">Endereço de entrega: </span>
+                {{-- <span>{{ $order->User()->avaiableAddress()->FormattedAddress() }}</span> --}}
             </div>
             <div>
                 <table class="table">

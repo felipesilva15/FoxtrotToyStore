@@ -90,7 +90,7 @@
         @if (!$cartItems->isEmpty())
             <div class="mt-5 shadow rounded p-4 container">
                 <div class="d-flex align-items-center mb-4">
-                    <span class="material-icons mt-1 ms-1 me-2 md-24 text-primary">list_alt</span>
+                    <span class="material-icons mt-1 me-2 md-24 text-primary">list_alt</span>
                     <span class="fw-bold fs-4">Resumo do pedido</span>
                 </div>
                 <div>
@@ -111,11 +111,21 @@
                         <span class="col-2">Total do pedido</span>
                         <span class="col-2 text-primary">R$ {{ number_format($totalizer['TOTAL'], 2, ',', '') }}</span>
                     </div>
-                    @if (isset($validator->user->address))
-                        <div class="mt-3">
+                    <div class="mt-3 mb-1">
+                        @if (isset($validator->user->address))
                             @include('components.error-message', ['icon' => $validator->user->address->icon, 'description' => $validator->user->address->description])
-                        </div>
-                    @endif
+                        @else
+                            <hr>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="material-icons mt-1 me-2 md-24 text-primary">home</span>
+                                <span class="fw-bold fs-4">Endereço de entrega</span>
+                            </div>
+                            <div>
+                                {{-- {{ Auth::user()->avaiableAddress()->FormattedAddress() }} --}}
+                                Rua dos canárinhos, 158 - Casa, São Paulo, SP
+                            </div>
+                        @endif
+                    </div>
                     <div class="d-flex align-items-stretch mt-3 flex-wrap">
                         <form action="{{ route('order.store') }}" method="post">
                             @csrf
