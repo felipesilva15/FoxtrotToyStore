@@ -160,9 +160,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+    {{-- Clave JS --}}
+    <script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
+
     {{-- Custom JS --}}
     <script src="{{ asset('js/api.js') }}"></script>
+    <script src="{{ asset('js/utils.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
 
     {{-- Toastify JS --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

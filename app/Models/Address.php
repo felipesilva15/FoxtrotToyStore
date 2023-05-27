@@ -22,6 +22,7 @@ class Address extends Model
         'ENDERECO_CIDADE',
         'ENDERECO_ESTADO',
         'ENDERECO_APAGADO',
+        'USUARIO_ID'
     ];
 
     public function user()
@@ -30,16 +31,15 @@ class Address extends Model
     }
 
     //Método para montar o endereço completo formatado
-    public function getFormattedAddress()
-    {
-    $formattedAddress = $this->ENDERECO_LOGRADOURO . ', ' . $this->ENDERECO_NUMERO;
+    public function FormattedAddress() {
+        $formattedAddress = $this->ENDERECO_LOGRADOURO . ', ' . $this->ENDERECO_NUMERO;
 
-    if ($this->ENDERECO_COMPLEMENTO) {
-        $formattedAddress .= ' - ' . $this->ENDERECO_COMPLEMENTO;
-    }
+        if ($this->ENDERECO_COMPLEMENTO) {
+            $formattedAddress .= ' - ' . $this->ENDERECO_COMPLEMENTO;
+        }
 
-    $formattedAddress .= ', ' . $this->ENDERECO_CIDADE . ', ' . $this->ENDERECO_ESTADO;
+        $formattedAddress .= ' - ' . $this->ENDERECO_CIDADE . ', ' . $this->ENDERECO_ESTADO . ' - CEP ' . $this->ENDERECO_CEP;
 
-    return $formattedAddress;
+        return $formattedAddress;
     }
 }

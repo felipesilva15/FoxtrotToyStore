@@ -34,9 +34,9 @@ class CartController extends Controller
             'user' => []
         ];
 
-        //if(Auth::user()->AvaiableAddress()) {
+        if(!Auth::user()->activeAddress()) {
             $validator['user']['address'] = ['icon' => 'home', 'description' => 'Endereço não cadastrado!'];
-        //}
+        }
 
         foreach ($cartItems as $item) {
             if($item->produto->PRODUTO_ATIVO != 1) {

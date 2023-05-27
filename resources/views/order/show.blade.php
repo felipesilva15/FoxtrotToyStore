@@ -16,10 +16,12 @@
                 <span class="fw-bold">Status: </span>
                 <span>{{ $order->OrderStatus->STATUS_DESC }}</span>
             </div>
-            <div class="mt-2 mb-5">
-                <span class="fw-bold">Endereço de entrega: </span>
-                {{-- <span>{{ $order->User()->avaiableAddress()->FormattedAddress() }}</span> --}}
-            </div>
+            @if ($order->User->activeAddress())
+                <div class="mt-2 mb-5">
+                    <span class="fw-bold">Endereço de entrega: </span>
+                    <span>{{ $order->User->activeAddress()->FormattedAddress() }}</span>
+                </div>
+            @endif
             <div>
                 <table class="table">
                     <thead>

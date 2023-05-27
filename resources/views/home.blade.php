@@ -5,9 +5,9 @@
 @section('content')
     <section id="primeira-secao" class="d-flex flex-column align-items-center py-5 ">
         <div class="container">
-            <div id="carouselExampleAutoplaying" class="carousel slide w-100 custom-shadow rounded" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item rounded">
+            <div id="carouselExampleAutoplaying" class="carousel slide w-100 custom-shadow rounded-4" data-bs-ride="carousel">
+                <div class="carousel-inner rounded-4">
+                    <div class="carousel-item">
                         <img src="{{ asset('images/card4.png') }}" class="d-block img-fluid m-0" alt="...">
                     </div>
                     <div class="carousel-item">
