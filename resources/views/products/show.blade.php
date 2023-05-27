@@ -21,8 +21,7 @@
                 <div class="w-50 ms-4">
                     <h2 class="mb-1">{{ $product->PRODUTO_NOME }}</h2>
                     <p class="text-secondary fs-5">{{ $product->Category->CATEGORIA_NOME }}</p>
-                    <p class="text-secondary overflow-hidden" style="min-height: 90px; max-height: 85px">
-                        {{ substr($product->Category->CATEGORIA_DESC, 0, 150) }}</p>
+                    <p class="text-secondary overflow-hidden" style="min-height: 76px; max-height: 76px">{{ substr($product->Category->CATEGORIA_DESC, 0, 150) }}</p>
                     <div class="mt-5">
                         @if (isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0 && $product->PRODUTO_ATIVO == 1)
                             <span class="fs-5 fw-bold me-1 text-primary">{{ $product->FormattedDiscountPrice() }}</span>
