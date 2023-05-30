@@ -121,7 +121,7 @@
                                 <span class="fw-bold fs-4">Endereço de entrega</span>
                             </div>
                             <div>
-                                {{-- {{ Auth::user()->avaiableAddress()->FormattedAddress() }} --}}
+                                {{-- {{ Auth::user()->activeAddress()->FormattedAddress() }} --}}
                                 Rua dos canárinhos, 158 - Casa, São Paulo, SP
                             </div>
                         @endif
