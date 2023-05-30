@@ -16,6 +16,14 @@
                 <span class="fw-bold">Status: </span>
                 <span>{{ $order->OrderStatus->STATUS_DESC }}</span>
             </div>
+            <div class="mt-2">
+                <span class="fw-bold">Cliente: </span>
+                <span>{{ $order->User->USUARIO_NOME }}</span>
+            </div>
+            <div class="mt-2">
+                <span class="fw-bold">CPF: </span>
+                <span class="cpfTextMask">{{ $order->User->USUARIO_CPF }}</span>
+            </div>
             <div class="mt-2 mb-5">
                 <span class="fw-bold">Endereço de entrega: </span>
                 {{-- @if ($order->User->activeAddress())
@@ -45,7 +53,7 @@
                                     <div class="d-flex flex-column flex-fill px-3">
                                         <a href="{{ route('product.show', ['product' => $item->product->PRODUTO_ID]) }}" class="text-reset text-decoration-none fw-bold fs-5">{{ $item->product->PRODUTO_NOME }}</a>
                                         <span
-                                            class="text-secondary-emphasis">{{ $item->product->category->CATEGORIA_NOME }}</span>
+                                            class="text-secondary-emphasis fw-bold">{{ $item->product->category->CATEGORIA_NOME }}</span>
                                         <span class="text-secondary-emphasis">Quantidade: {{ $item->ITEM_QTD }}</span>
                                     </div>
                                 </td>
