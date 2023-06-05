@@ -2,13 +2,16 @@ const api = {};
 
 let protocol = window.location.protocol;
 let host = window.location.hostname;
-let port = window.location.port && window.location.port != '' ? ':' + window.location.port : '';
+let port =
+    window.location.port && window.location.port != ""
+        ? ":" + window.location.port
+        : "";
 let urlBase = `${protocol}//${host}${port}`;
 let urlApi = `${urlBase}/api`;
 
 // Realiza uma requisição de um arquivo do projeto sem retornar um conjunto de dados
 api.request = (url, method, data, notInternal) => {
-    url =  notInternal ? url : `${urlApi}${url}`;
+    url = notInternal ? url : `${urlApi}${url}`;
 
     const promisse = new Promise((resolve, reject) => {
         $.ajax({
@@ -18,7 +21,7 @@ api.request = (url, method, data, notInternal) => {
             processData: false,
             contentType: false,
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
             success: (res) => {
                 if (res === undefined) {
@@ -32,30 +35,25 @@ api.request = (url, method, data, notInternal) => {
             error: (req) => {
                 reject({
                     title: "Erro inesperado",
-                    message: "Tente novamente mais tarde. Caso o erro persista, entre em contato com o administrador do seu sistema.",
+                    message:
+                        "Tente novamente mais tarde. Caso o erro persista, entre em contato com o administrador do seu sistema.",
                     req: req,
-                    items: []
+                    items: [],
                 });
-            }
-        })
+            },
+        });
     });
 
     return promisse;
 };
 
 api.requestArchive = (url, method, data) => {
-<<<<<<< HEAD
     let errorModel = {
         status: 500,
         title: "Erro inesperado",
-        message: "Tente novamente mais tarde. Caso o erro persista, entre em contato com o administrador do seu sistema.",
-=======
-    let errorModel = {
-        status: 500,
-        title: "Erro inesperado",
-        message: "Tente novamente mais tarde. Caso o erro persista, entre em contato com o administrador do seu sistema.",
->>>>>>> 2e19aca1cf5d46be42c7061640586b69f4807ee8
-        items: []
+        message:
+            "Tente novamente mais tarde. Caso o erro persista, entre em contato com o administrador do seu sistema.",
+        items: [],
     };
 
     const promisse = new Promise((resolve, reject) => {
@@ -78,13 +76,9 @@ api.requestArchive = (url, method, data) => {
             },
             error: (request) => {
                 reject(errorModel);
-            }
-        })
+            },
+        });
     });
 
     return promisse;
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 2e19aca1cf5d46be42c7061640586b69f4807ee8
