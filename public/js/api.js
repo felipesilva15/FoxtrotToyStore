@@ -44,10 +44,17 @@ api.request = (url, method, data, notInternal) => {
 };
 
 api.requestArchive = (url, method, data) => {
+<<<<<<< HEAD
     let errorModel = {
         status: 500,
         title: "Erro inesperado",
         message: "Tente novamente mais tarde. Caso o erro persista, entre em contato com o administrador do seu sistema.",
+=======
+    let errorModel = {
+        status: 500,
+        title: "Erro inesperado",
+        message: "Tente novamente mais tarde. Caso o erro persista, entre em contato com o administrador do seu sistema.",
+>>>>>>> 2e19aca1cf5d46be42c7061640586b69f4807ee8
         items: []
     };
 
@@ -76,4 +83,8 @@ api.requestArchive = (url, method, data) => {
     });
 
     return promisse;
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 2e19aca1cf5d46be42c7061640586b69f4807ee8
