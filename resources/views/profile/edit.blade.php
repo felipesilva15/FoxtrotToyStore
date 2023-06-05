@@ -8,7 +8,8 @@
             <h2>Meu Perfil</h2>
         </div>
         <div class="d-flex flex-column justify-content-center align-items-center full-vh">
-            <div class="w-100 shadow rounded mb-4 p-4"> <!-- DIV do Forms de Dados do Usuário-->
+            <div class="w-100 shadow rounded mb-4 p-4">
+                <!-- DIV do Forms de Dados do Usuário-->
                 <form method="POST" id="user-form" action="{{ route('profile.update') }}" name="userForm">
                     @csrf
                     {{-- DADOS DO USUÁRIO --}}
@@ -18,14 +19,16 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label fw-bold" for="nome">Nome <span class="fw-bold text-danger">*</span></label>
-                            <input class="form-control" type="text" id="nome" name="USUARIO_NOME" value="{{ Auth::user()->USUARIO_NOME }}" required>
+                            <input class="form-control" type="text" id="nome" name="USUARIO_NOME"
+                                value="{{ Auth::user()->USUARIO_NOME }}" required>
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label fw-bold" for="email">Email <span class="fw-bold text-danger">*</span></label>
-                            <input class="form-control" type="text" id="email" name="USUARIO_EMAIL" value="{{ Auth::user()->USUARIO_EMAIL }}" required>
+                            <input class="form-control" type="text" id="email" name="USUARIO_EMAIL"
+                                value="{{ Auth::user()->USUARIO_EMAIL }}" required>
                             @if ($errors->get('USUARIO_EMAIL'))
                                 <div class="text-danger">
-                                    {{$errors->get('USUARIO_EMAIL')[0]}}
+                                    {{ $errors->get('USUARIO_EMAIL')[0] }}
                                 </div>
                             @endif
                         </div>
@@ -34,13 +37,14 @@
                             <input class="form-control" type="password" id="senha" name="USUARIO_SENHA" required>
                             @if ($errors->get('USUARIO_SENHA'))
                                 <div class="text-danger">
-                                    {{$errors->get('USUARIO_SENHA')[0]}}
+                                    {{ $errors->get('USUARIO_SENHA')[0] }}
                                 </div>
                             @endif
                         </div>
                         <div class="col-6 mb-2">
                             <label class="form-label fw-bold" for="cpf">CPF <span class="fw-bold text-danger">*</span></label>
-                            <input class="form-control cpfMask" type="text" id="cpf" name="USUARIO_CPF" value="{{ Auth::user()->USUARIO_CPF }}">
+                            <input class="form-control cpfMask" type="text" id="cpf" name="USUARIO_CPF"
+                                value="{{ Auth::user()->USUARIO_CPF }}">
                         </div>
                         <div class="col-12 mb-2">
                             <button class="btn btn-primary float-end" type="submit">Atualizar</button>
@@ -68,22 +72,22 @@
                             </div>
                             @if ($errors->get('endereco_cep'))
                                 <div class="text-danger">
-                                    {{$errors->get('endereco_cep')[0]}}
+                                    {{ $errors->get('endereco_cep')[0] }}
                                 </div>
                             @endif
                         </div>
                         <div class="d-flex flex-column col-8 mb-3">
                             <label class="form-label fw-bold" for="TipoEndereco">Tipo de Endereço <span class="fw-bold text-danger">*</span></label>
-                            <select class="form-select" id="tipo" name="ENDERECO_NOME" required>
+                            <select class="form-select" id="tipo" name="endereco_nome" value="{{ $address->ENDERECO_NOME ?? '' }}" required>
                                 <option value="">Selecione</option>
                                 <option value="Casa" {{ Auth::user()->ENDERECO_NOME == 'Casa' ? 'selected' : '' }}>Casa</option>
                                 <option value="Apartamento" {{ Auth::user()->ENDERECO_NOME == 'Apartamento' ? 'selected' : '' }}>Apartamento</option>
                                 <option value="Trabalho" {{ Auth::user()->ENDERECO_NOME == 'Trabalho' ? 'selected' : '' }}>Trabalho</option>
                                 <option value="Outro" {{ Auth::user()->ENDERECO_NOME == 'Outro' ? 'selected' : '' }}>Outro</option>
                             </select>
-                                @if ($errors->get('endereco_nome'))
+                            @if ($errors->get('endereco_nome'))
                                 <div class="text-danger">
-                                    {{$errors->get('endereco_nome')[0]}}
+                                    {{ $errors->get('endereco_nome')[0] }}
                                 </div>
                             @endif
                         </div>
@@ -92,7 +96,7 @@
                             <input class="form-control bg-body-secondary" type="text" id="logradouro" name="endereco_logradouro" value="{{ $address->ENDERECO_LOGRADOURO ?? '' }}" required readonly>
                             @if ($errors->get('endereco_logradouro'))
                                 <div class="text-danger">
-                                    {{$errors->get('endereco_logradouro')[0]}}
+                                    {{ $errors->get('endereco_logradouro')[0] }}
                                 </div>
                             @endif
                         </div>
@@ -101,7 +105,7 @@
                             <input class="form-control" type="text" id="numero" name="endereco_numero" value="{{ $address->ENDERECO_NUMERO ?? '' }}" required>
                             @if ($errors->get('endereco_numero'))
                                 <div class="text-danger">
-                                    {{$errors->get('endereco_numero')[0]}}
+                                    {{ $errors->get('endereco_numero')[0] }}
                                 </div>
                             @endif
                         </div>
@@ -114,7 +118,7 @@
                             <input class="form-control bg-body-secondary" type="text" id="cidade" name="endereco_cidade" value="{{ $address->ENDERECO_CIDADE ?? '' }}" required readonly>
                             @if ($errors->get('endereco_cidade'))
                                 <div class="text-danger">
-                                    {{$errors->get('endereco_cidade')[0]}}
+                                    {{ $errors->get('endereco_cidade')[0] }}
                                 </div>
                             @endif
                         </div>
@@ -132,11 +136,14 @@
                     </div>
                 </form>
                 <div>
-                    <form action="{{ route('profile.address.destroy') }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger float-end" type="submit">Excluir</button>
-                    </form>
+                    @if (!$address)
+                    @else
+                        <form action="{{ route('profile.address.destroy') }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger float-end" type="submit">Excluir</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>

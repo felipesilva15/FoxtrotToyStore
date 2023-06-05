@@ -141,11 +141,9 @@
             </div>
         </div>
     </section>
-    <section id="quinta-secao" class="d-flex flex-column align-items-center py-5">
-        <div class="container">
-            <div class="custom-shadow rounded-4">
-                <img src="{{ asset('images/frete.png') }}" alt="Frete-Off" class="logo-image img-fluid">
-            </div>
+    <section id="quinta-secao" class="py-5">
+        <div class="container d-flex flex-column align-items-center">
+                <img src="{{ asset('images/frete.png') }}" alt="Frete-Off" class="logo-image img-fluid  custom-shadow rounded-4">
         </div>
     </section>
 @endsection
