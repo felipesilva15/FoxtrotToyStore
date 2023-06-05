@@ -79,11 +79,11 @@
                         <div class="d-flex flex-column col-8 mb-3">
                             <label class="form-label fw-bold" for="TipoEndereco">Tipo de Endereço <span class="fw-bold text-danger">*</span></label>
                             <select class="form-select" id="tipo" name="endereco_nome" value="{{ $address->ENDERECO_NOME ?? '' }}" required>
-                                <option value="">Selecione</option>
-                                <option value="Casa" {{ Auth::user()->ENDERECO_NOME == 'Casa' ? 'selected' : '' }}>Casa</option>
-                                <option value="Apartamento" {{ Auth::user()->ENDERECO_NOME == 'Apartamento' ? 'selected' : '' }}>Apartamento</option>
-                                <option value="Trabalho" {{ Auth::user()->ENDERECO_NOME == 'Trabalho' ? 'selected' : '' }}>Trabalho</option>
-                                <option value="Outro" {{ Auth::user()->ENDERECO_NOME == 'Outro' ? 'selected' : '' }}>Outro</option>
+                                <option>-- Selecione --</option>
+                                <option value="Casa" {{ $address->ENDERECO_NOME ?? '' == 'Casa' ? 'selected' : '' }}>Casa</option>
+                                <option value="Apartamento" {{ $address->ENDERECO_NOME ?? '' == 'Apartamento' ? 'selected' : '' }}>Apartamento</option>
+                                <option value="Trabalho" {{ $address->ENDERECO_NOME ?? '' == 'Trabalho' ? 'selected' : '' }}>Trabalho</option>
+                                <option value="Outro" {{ $address->ENDERECO_NOME ?? '' == 'Outro' ? 'selected' : '' }}>Outro</option>
                             </select>
                             @if ($errors->get('endereco_nome'))
                                 <div class="text-danger">
@@ -141,7 +141,7 @@
                         <form action="{{ route('profile.address.destroy') }}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger float-end" type="submit">Excluir</button>
+                            <button type="submit" class="btn btn-danger float-end mt-2" type="submit">Excluir</button>
                         </form>
                     @endif
                 </div>

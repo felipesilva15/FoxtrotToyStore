@@ -26,9 +26,9 @@
             </div>
             <div class="mt-2 mb-5">
                 <span class="fw-bold">Endereço de entrega: </span>
-                {{-- @if ($order->User->activeAddress())
+                @if ($order->User->activeAddress())
                     <span>{{ $order->User->activeAddress()->FormattedAddress() }}</span>
-                @endif --}}
+                @endif
             </div>
             <div>
                 <table class="table">

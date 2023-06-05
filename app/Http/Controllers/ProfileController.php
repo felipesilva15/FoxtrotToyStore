@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -24,7 +25,13 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        $user->update($request->all());
+        foreach ($request->all() as $key => $value) {
+            $data[strtoupper($key)] = $value;
+        }
+
+        $data['USUARIO_SENHA'] = Hash::make($data['USUARIO_SENHA']);
+
+        $user->update($data);
 
         return redirect()->back()->with('success', 'Dados do usuário atualizados com sucesso.');
     }
