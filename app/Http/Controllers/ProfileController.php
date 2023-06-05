@@ -15,16 +15,16 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $user = $request->user();
-        $address = $user->address;
+        $address = $user->activeAddress();
 
         return view('profile.edit', compact('user', 'address'));
     }
 
     public function updateUser(ProfileUpdateRequest $request): RedirectResponse
     {
-        $user = $request->user();
+        $user = Auth::user();
 
-        $user->update($request->validated());
+        $user->update($request->all());
 
         return redirect()->back()->with('success', 'Dados do usuário atualizados com sucesso.');
     }
@@ -32,22 +32,28 @@ class ProfileController extends Controller
     public function updateAddress(Request $request): RedirectResponse
     {
         $request->validate([
-            'ENDERECO_CEP' => 'required|string|max:8',
-            'ENDERECO_NOME' => 'required|string',
-            'ENDERECO_LOGRADOURO' => 'required|string',
-            'ENDERECO_NUMERO' => 'required|string',
-            'ENDERECO_COMPLEMENTO' => 'nullable|string',
-            'ENDERECO_CIDADE' => 'required|string',
-            'ENDERECO_ESTADO' => 'required|string',
+            'endereco_cep' => 'required|string|max:8',
+            'endereco_nome' => 'required|string',
+            'endereco_logradouro' => 'required|string',
+            'endereco_numero' => 'required|string',
+            'endereco_complemento' => 'nullable|string',
+            'endereco_cidade' => 'required|string',
+            'endereco_estado' => 'required|string',
         ]);
 
         $user = $request->user();
-        $address = $user->address;
+        $address = $user->activeAddress();
+
+        foreach ($request->all() as $key => $value) {
+            $data[strtoupper($key)] = $value;
+        }
+
+        $data['USUARIO_ID'] = $user->USUARIO_ID;
 
         if ($address) {
-            $address->update($request->validated());
+            $address->update($data);
         } else {
-            $user->address()->create($request->validated());
+            Address::create($data);
         }
 
         return redirect()->back()->with('success', 'Dados do endereço atualizados com sucesso.');
@@ -69,5 +75,18 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function destroyAddress(): RedirectResponse
+    {
+        if (!Auth::user()->activeAddress()) {
+            return redirect()->back();
+        }
+
+        Auth::user()->activeAddress()->update([
+            'ENDERECO_APAGADO' => 1
+        ]);
+
+        return redirect()->back()->with('success', 'Endereço excluído com sucesso.');
     }
 }

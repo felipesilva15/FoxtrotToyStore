@@ -38,12 +38,11 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->hasOne(Address::class, 'USUARIO_ENDERECO', 'USUARIO_ENDERECO');
+        return $this->hasOne(Address::class, 'USUARIO_ID', 'USUARIO_ID');
     }
 
     //Método para retornar um único objeto do endereço ativo do usuário
-    public function activeAddress()
-    {
-    return $this->hasOne(Address::class)->where('active', true);
+    public function activeAddress() {
+        return $this->address()->where('ENDERECO_APAGADO', 0)->first();
     }
 }

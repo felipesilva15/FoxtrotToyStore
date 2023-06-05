@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'updateUser'])->name('profile.update');
     Route::post('/profile/address', [ProfileController::class, 'updateAddress'])->name('profile.address.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile/address', [ProfileController::class, 'destroyAddress'])->name('profile.address.destroy');
 
     // Cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart');

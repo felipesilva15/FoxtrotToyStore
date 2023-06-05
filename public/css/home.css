@@ -62,6 +62,10 @@ section h2{
     max-height: 80%;
   }
 
+  .circle-container .logo-image {
+    transition: .25s ease;
+  }
+
   .circle-container:hover .logo-image {
     transform: scale(1.1); /* Aumenta a escala da imagem em 10% */
 }
@@ -70,20 +74,18 @@ section h2{
 /* 2ª SESSÃO DA HOME */
 #segunda-secao {
     background-color: #ECECEC;
-    /* position: relative; */
-    /* torna o elemento pai posicionado para que o elemento pseudo possa ser posicionado em relação a ele */
-    /* background-image: url('../images/3898.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover; */
-    /* background-color: rgba(0, 0, 0, 0.1) !important; */
-    /* aplica a cor de fundo com opacidade na seção */
   }
 
+.text-justify {
+        text-align: justify !important;
+    }
 
 /* 3ª SESSÃO DA HOME */
-#terceira-secao{
-
+#quarta-secao{
+    background-color: #ECECEC;
 }
 
+#quinta-secao{
+    align-items: flex-end !important;
+
+}
