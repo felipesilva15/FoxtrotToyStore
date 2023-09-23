@@ -7,7 +7,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 WORKDIR /app
 
 COPY . .
-COPY .env.example .env
 
 RUN composer install && php artisan key:generate
 
