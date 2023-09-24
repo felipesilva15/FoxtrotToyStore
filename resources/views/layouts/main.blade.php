@@ -21,13 +21,13 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
     {{-- Paleta de cores --}}
-    <link rel="stylesheet" href="{{ asset('css/color-palette.css') }}">
+    <link rel="stylesheet" href="css/color-palette.css">
 
     {{-- CSS principal --}}
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="css/main.css">
 
     {{-- CSS Home --}}
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="css/home.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
@@ -164,16 +164,16 @@
     <script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
 
     {{-- Custom JS --}}
-    <script src="{{ asset('js/api.js') }}"></script>
-    <script src="{{ asset('js/utils.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
 
     {{-- Toastify JS --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     {{-- Configuration toast Messages --}}
-    <script src="{{ asset('js/configToastfy.js') }}"></script>
+    <script src="js/configToastfy.js"></script>
     @include('layouts.inc.toastMessages')
 
     {{-- JS views --}}

@@ -1,5 +1,5 @@
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/product-carrousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="css/product-carrousel.css">
 @endpush
 
 <div class="d-flex flex-column">
@@ -46,5 +46,5 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('js/product-images.js') }}"></script>
+    <script src="js/product-images.js"></script>
 @endpush

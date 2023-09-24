@@ -23,11 +23,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
     {{-- CSS principal --}}
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <link rel="stylesheet" href="css/auth.css">
 
 
     {{-- CSS Home --}}
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="css/home.css">
 
 
     {{-- CSS views --}}
@@ -50,8 +50,8 @@
     <script src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
 
     {{-- Custom JS --}}
-    <script src="{{ asset('js/api.js') }}"></script>
-    <script src="{{ asset('js/utils.js') }}"></script>
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
 
     {{-- JS views --}}
     @stack('scripts')
