@@ -23,7 +23,7 @@ RUN sed -i "s/DB_HOST=.*/DB_HOST=${DB_HOST}/" .env \
     && sed -i "s/DB_USERNAME=.*/DB_USERNAME=${DB_USERNAME}/" .env \
     && sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=${DB_PASSWORD}/" .env
 
-RUN composer install --optimize-autoloader --no-dev
+RUN composer install
 RUN php artisan route:cache && php artisan view:cache
 RUN php artisan key:generate
 
