@@ -8,6 +8,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install && php artisan key:generate
+RUN composer install --optimize-autoloader --no-dev
+RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+RUN php artisan key:generate
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0"]
