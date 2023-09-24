@@ -11,11 +11,11 @@ COPY .env.example .env
 
 # Defina as variáveis de ambiente no Dockerfile
 ENV DB_CONNECTION=mysql
-ENV DB_HOST=localhost
+ENV DB_HOST=144.22.157.228
 ENV DB_PORT=3306
-ENV DB_DATABASE=db
-ENV DB_USERNAME=root
-ENV DB_PASSWORD=123
+ENV DB_DATABASE=Fox
+ENV DB_USERNAME=fox
+ENV DB_PASSWORD=fox
 # Substitua as variáveis no arquivo .env pelas variáveis de ambiente
 RUN sed -i "s/DB_HOST=.*/DB_HOST=${DB_HOST}/" .env \
     && sed -i "s/DB_PORT=.*/DB_PORT=${DB_PORT}/" .env \
