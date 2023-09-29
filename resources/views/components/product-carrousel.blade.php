@@ -1,5 +1,5 @@
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="css/product-carrousel.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/product-carrousel.css') }}">
 @endpush
 
 <div id="product-carrousel" class="carousel" data-bs-ride="carousel">
@@ -21,5 +21,5 @@
 </div>
 
 @push('scripts')
-    <script src="js/product-carrousel.js"></script>
+    <script src="{{ asset('js/product-carrousel.js') }}"></script>
 @endpush

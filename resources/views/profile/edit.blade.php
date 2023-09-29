@@ -151,5 +151,5 @@
 @endsection
 
 @push('scripts')
-    <script src="js/profile-edit.js"></script>
+    <script src="{{ asset('js/profile-edit.js') }}"></script>
 @endpush

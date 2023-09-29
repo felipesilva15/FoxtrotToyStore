@@ -3,7 +3,7 @@
 @section('title', "{$product->PRODUTO_NOME} | Foxtrot Toy Store")
 
 @push('scripts')
-    <link rel="stylesheet" href="css/product-show.css">
+    <link rel="stylesheet" href="{{ asset('css/product-show.css') }}">
 @endpush
 
 @section('content')
@@ -92,5 +92,5 @@
 @endsection
 
 @push('scripts')
-    <script src="js/product-show.js"></script>
+    <script src="{{ asset('js/product-show.js') }}"></script>
 @endpush
