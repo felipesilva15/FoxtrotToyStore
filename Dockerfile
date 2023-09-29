@@ -16,7 +16,7 @@ ARG DB_PORT=3306
 ARG DB_DATABASE=Fox
 ARG DB_USERNAME=fox
 ARG DB_PASSWORD=fox
-ARG APP_URL=https://foxtrot-toystore-y2od-dev.fl0.io/
+ARG ASSET_URL=https://foxtrot-toystore-y2od-dev.fl0.io/
 
 # Substitua as variáveis no arquivo .env pelas variáveis de ambiente
 RUN sed -i "s#DB_HOST=.*#DB_HOST=${DB_HOST}#" .env \
@@ -24,7 +24,7 @@ RUN sed -i "s#DB_HOST=.*#DB_HOST=${DB_HOST}#" .env \
     && sed -i "s#DB_DATABASE=.*#DB_DATABASE=${DB_DATABASE}#" .env \
     && sed -i "s#DB_USERNAME=.*#DB_USERNAME=${DB_USERNAME}#" .env \
     && sed -i "s#DB_PASSWORD=.*#DB_PASSWORD=${DB_PASSWORD}#" .env \
-    && sed -i "s#APP_URL=.*#APP_URL=${APP_URL}#" .env
+    && sed -i "s#ASSET_URL=.*#ASSET_URL=${ASSET_URL}#" .env
 
 RUN composer install
 RUN php artisan route:cache && php artisan view:cache
