@@ -46,10 +46,14 @@ class OrderController extends Controller
             }
         }
 
+        $orderStatus = OrderStatus::all()
+                                    ->orderBy('STATUS_ID')
+                                    ->limit(1);
+
         // Cria o pedido
         $order = Order::create([
             'USUARIO_ID' => $user->USUARIO_ID,
-            'STATUS_ID' => 1,
+            'STATUS_ID' => $orderStatus->STATUS_ID,
             'PEDIDO_DATA' => now()
         ]);
 
