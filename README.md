@@ -26,6 +26,8 @@
 
 Este é um e-commerce fictício de venda de brinquedos, chamado Foxtrot Toy Store.
 
+Este projeto foi implantado em uma VPS na [Hostinger](https://www.hostinger.com.br/), e está disponível através do link <https://foxtrot-toystore.felipesilva15.com.br>
+
 ## 🚀 Rodando localmente
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
