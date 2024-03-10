@@ -11,7 +11,7 @@
             <img class="w-100 image-fit" src="{{ isset($product->OrderedProductImages()[0]->IMAGEM_URL) ? $product->OrderedProductImages()[0]->IMAGEM_URL : $product->DefaultProductImage() }}" alt="Imagem do produto">
         </div>
         <div class="d-flex flex-column justify-content-start text-start mb-3 mt-2">
-            <span class="fw-bold fs-5 text-nowrap overflow-hidden two-lines-span" data-bs-toggle="tooltip" data-bs-title="Default tooltip">{{ $product->PRODUTO_NOME ?? '' }}</span>
+            <span class="fw-bold fs-5 overflow-hidden two-lines-span" data-bs-toggle="tooltip" data-bs-title="Default tooltip">{{ $product->PRODUTO_NOME ?? '' }}</span>
             <span class="text-secondary-emphasis">{{ $product->Category->CATEGORIA_NOME ?? '' }}</span>
             <div class="mt-2">
                 @if(isset($product->ProductStock->PRODUTO_QTD) && $product->ProductStock->PRODUTO_QTD != 0)
