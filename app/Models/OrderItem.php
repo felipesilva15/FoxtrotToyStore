@@ -26,7 +26,7 @@ class OrderItem extends Model
     }
 
     public function ItemTotal(){
-        return number_format(($this->product->PRODUTO_PRECO - $this->product->PRODUTO_DESCONTO) * $this->ITEM_QTD, 2, ',', '.');
+        return number_format(($this->ITEM_PRECO) * $this->ITEM_QTD, 2, ',', '.');
     }
 
     protected function setKeysForSaveQuery($query){
