@@ -74,7 +74,7 @@
                         <div class="row">
                             @if(count($products))
                                 @foreach ($products as $product)
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-10 offset-1 offset-sm-0 p-0">
                                         @include('components.product-card', $product)
                                     </div>
                                 @endforeach
