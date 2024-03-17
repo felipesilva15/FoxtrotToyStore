@@ -21,7 +21,7 @@ class ProductController extends Controller
             if(count(request('categories')) > 1){
                 array_push($breadcrumbRoutes, ['name' => 'Diversas categorias', 'url' => route('product', ['categories' => request('categories')])]);
             } else{
-                array_push($breadcrumbRoutes, ['name' => ucwords($categories[0]->CATEGORIA_NOME), 'url' => route('product', ['categories[]' => $categories[0]->CATEGORIA_ID])]);
+                array_push($breadcrumbRoutes, ['name' => $categories[0]->CATEGORIA_NOME, 'url' => route('product', ['categories[]' => $categories[0]->CATEGORIA_ID])]);
             }
         }
 
@@ -128,7 +128,7 @@ class ProductController extends Controller
             ['name' => 'Home', 'url' => route('home')],
             ['name' => 'Produtos', 'url' => route('product')],
             ['name' => $product->Category->CATEGORIA_NOME, 'url' => route('product', ['categories[]' => $product->CATEGORIA_ID])],
-            ['name' => ucwords($product->PRODUTO_NOME), 'url' => route('product.show', ['product' => $product->PRODUTO_ID])]
+            ['name' => $product->PRODUTO_NOME, 'url' => route('product.show', ['product' => $product->PRODUTO_ID])]
         ];
 
         return view('products.show', ['product' => $product, 'breadcrumbRoutes' => $breadcrumbRoutes]);
