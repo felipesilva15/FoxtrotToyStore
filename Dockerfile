@@ -11,11 +11,11 @@ COPY .env.example .env
 
 # Defina as variáveis de ambiente no Dockerfile
 ARG DB_CONNECTION=mysql
-ARG DB_HOST=144.22.157.228
-ARG DB_PORT=3306
-ARG DB_DATABASE=Fox
-ARG DB_USERNAME=fox
-ARG DB_PASSWORD=fox
+ARG DB_HOST
+ARG DB_PORT
+ARG DB_DATABASE
+ARG DB_USERNAME
+ARG DB_PASSWORD
 ARG APP_ENV=production
 
 # Substitua as variáveis no arquivo .env pelas variáveis de ambiente
