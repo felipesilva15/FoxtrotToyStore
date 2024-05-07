@@ -49,10 +49,7 @@ class OrderController extends Controller
 
         $orderStatus = OrderStatus::select('STATUS_ID')
                                     ->orderBy('STATUS_ID')
-                                    ->limit(1)
-                                    ->get();
-
-        $orderStatus = $orderStatus[0];
+                                    ->first();
 
         // Cria o pedido
         $order = Order::create([
