@@ -4,12 +4,15 @@
 /* 1ª SESSÃO DA HOME */
 #primeira-secao{
     display: flex;
-    padding: 50px 50px;
+    padding: 50px 0px;
     width: 100%;
 }
 
 .carousel-item{
-    height: 380px;
+  max-height: 380px;
+  min-height: 120px;
+  object-fit: contain;
+  aspect-ratio: 24/7;
 }
 
 .carousel-item > img{
@@ -88,8 +91,4 @@ section h2{
 /* 3ª SESSÃO DA HOME */
 #quarta-secao{
     background-color: #ECECEC;
-}
-
-#quinta-secao{
-
 }

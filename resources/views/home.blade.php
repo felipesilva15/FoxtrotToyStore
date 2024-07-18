@@ -7,7 +7,7 @@
         <div class="container">
             <div id="carouselExampleAutoplaying" class="carousel slide w-100 custom-shadow rounded-4" data-bs-ride="carousel">
                 <div class="carousel-inner rounded-4">
-                    <div class="carousel-item">
+                    <div class="carousel-item h">
                         <img src="{{ asset('images/card4.png') }}" class="d-block img-fluid m-0" alt="...">
                     </div>
                     <div class="carousel-item">
@@ -37,32 +37,22 @@
         <div>
             <h2 class="pb-5 m-0 fw-bold text-center">Principais Marcas</h2>
         </div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-2">
-                    <div class="circle-container">
-                        <img src="{{ asset('images/marca1.png') }}" alt="Marca 1" class="logo-image img-fluid">
-                    </div>
+        <div class="container px-4 px-sm-2">
+            <div class="row justify-content-center gap-3">
+                <div class="circle-container">
+                    <img src="{{ asset('images/marca1.png') }}" alt="Estrela" class="logo-image img-fluid">
                 </div>
-                <div class="col-2">
-                    <div class="circle-container">
-                        <img src="{{ asset('images/marca2.png') }}" alt="Marca 2" class="logo-image img-fluid">
-                    </div>
+                <div class="circle-container">
+                    <img src="{{ asset('images/marca2.png') }}" alt="Mattel" class="logo-image img-fluid">
                 </div>
-                <div class="col-2">
-                    <div class="circle-container">
-                        <img src="{{ asset('images/marca3.png') }}" alt="Marca 3" class="logo-image img-fluid">
-                    </div>
+                <div class="circle-container">
+                    <img src="{{ asset('images/marca3.png') }}" alt="Lego" class="logo-image img-fluid">
                 </div>
-                <div class="col-2">
-                    <div class="circle-container">
-                        <img src="{{ asset('images/marca4.png') }}" alt="Marca 4" class="logo-image img-fluid">
-                    </div>
+                <div class="circle-container">
+                    <img src="{{ asset('images/marca4.png') }}" alt="Lol" class="logo-image img-fluid">
                 </div>
-                <div class="col-2">
-                    <div class="circle-container">
-                        <img src="{{ asset('images/marca5.png') }}" alt="Marca 5" class="logo-image img-fluid">
-                    </div>
+                <div class="circle-container">
+                    <img src="{{ asset('images/marca5.png') }}" alt="Super Mario" class="logo-image img-fluid">
                 </div>
             </div>
         </div>
@@ -71,7 +61,7 @@
         <div>
             <h2 class="pb-5 m-0 fw-bold text-center">Brinquedos mais vendidos</h2>
         </div>
-        <div class="container">
+        <div class="container px-4 px-sm-2">
             <div class="row">
                 @foreach ($productsBestSellings as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
@@ -92,7 +82,7 @@
         <div>
             <h2 class="pb-5 m-0 fw-bold text-center">Sobre nós</h2>
         </div>
-        <div class="container">
+        <div class="container px-4 px-sm-2">
             <div class="row">
                 <div class="d-block justify-content-center">
                     <h3>Bem-vindo à Foxtrot Toy Store - Onde a diversão ganha vida!</h3>
@@ -124,7 +114,7 @@
         <div>
             <h2 class="pb-5 m-0 fw-bold text-center">Brinquedos com melhores descontos</h2>
         </div>
-        <div class="container">
+        <div class="container px-4 px-sm-2">
             <div class="row">
                 @foreach ($productsBestDiscounts as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-0">
@@ -145,8 +135,8 @@
         <div>
             <h2 class="pb-5 m-0 fw-bold text-center">Por tempo limitado...</h2>
         </div>
-        <div class="container d-flex flex-column align-items-center">
-            <img src="{{ asset('images/frete.png') }}" alt="Frete-Off" class="logo-image img-fluid  custom-shadow rounded-4">
+        <div class="container px-md-5">
+            <img src="{{ asset('images/frete.png') }}" alt="Frete-Off" class="img-fluid custom-shadow rounded-4">
         </div>
     </section>
 @endsection
