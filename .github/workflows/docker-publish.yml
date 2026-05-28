@@ -35,6 +35,6 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: foxtrot-toystore:latest
+          tags: felipesilva15/foxtrot-toystore:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
