@@ -9,9 +9,6 @@ envsubst < .env.template > .env
 echo "[entrypoint] Gerando APP_KEY..."
 php artisan key:generate --force
 
-echo "[entrypoint] Gerando JWT_SECRET..."
-php artisan jwt:secret --force
-
 # Migrations
 echo "[entrypoint] Rodando migrations..."
 php artisan migrate --force
